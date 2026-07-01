@@ -4,7 +4,11 @@ import { getHomePage } from "@/lib/home-page";
 import { getServicesByCategory, getServices } from "@/lib/services";
 import { getFeaturedCaseStudies } from "@/lib/case-studies";
 import { mediaSizeUrl } from "@/lib/payload";
+import { splitHeroTitle } from "@/lib/text";
+import { SITE_URL, SITE_NAME } from "@/lib/seo";
 import { ProblemIcon } from "@/components/icons";
+import { JsonLd } from "@/components/JsonLd";
+import { MediaFrame } from "@/components/MediaFrame";
 
 const CATEGORY_LABELS = {
   digital: "Digital",
@@ -20,15 +24,21 @@ export default async function Home() {
     getFeaturedCaseStudies(3),
   ]);
 
-  const heroTitle = homePage.heroTitle ?? "";
-  const commaIndex = heroTitle.indexOf(",");
-  const heroLine1 = commaIndex > -1 ? heroTitle.slice(0, commaIndex + 1) : heroTitle;
-  const heroLine2 = commaIndex > -1 ? heroTitle.slice(commaIndex + 1).trim() : "";
-
+  const [heroLine1, heroLine2] = splitHeroTitle(homePage.heroTitle ?? "");
   const marqueeItems = allServices.map((s) => s.title);
 
   return (
     <main>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: SITE_NAME,
+          url: SITE_URL,
+          description:
+            "Createam je tim specijalista koji spaja dizajn, development i sadržaj u jednu cjelinu.",
+        }}
+      />
       {/* HERO */}
       <section className="mx-auto max-w-[1280px] px-6 pb-16 pt-24 md:px-12 md:pb-24 md:pt-32">
         <div className="mb-16 flex items-baseline justify-between border-b border-border pb-5 text-sm uppercase tracking-[0.04em] text-ink-muted">
@@ -153,6 +163,18 @@ export default async function Home() {
                       </li>
                     ))}
                   </ul>
+                  {category === "growth" ? (
+                    <div className="flex flex-wrap items-center gap-2.5 border-t border-border pt-5">
+                      <span className="text-[13px] text-ink-muted">Uključuje:</span>
+                      <span className="rounded-full border border-border px-3 py-1.5 text-[13px] text-ink">
+                        AI optimizacija
+                      </span>
+                      <span className="rounded-full border border-border px-3 py-1.5 text-[13px] text-ink">
+                        Feed management
+                      </span>
+                      <span className="text-[13px] text-ink-faint">(nova usluga u ponudi)</span>
+                    </div>
+                  ) : null}
                 </div>
               ),
             )}
@@ -218,16 +240,10 @@ export default async function Home() {
                     href={`/radovi/${caseStudy.slug}`}
                     className="flex flex-col no-underline"
                   >
-                    <div
-                      className="flex aspect-[3/4] items-center justify-center border border-border bg-cover bg-center"
-                      style={
-                        imageUrl
-                          ? { backgroundImage: `url(${imageUrl})` }
-                          : {
-                              backgroundImage:
-                                "repeating-linear-gradient(135deg, #E4E4DE 0px, #E4E4DE 1px, transparent 1px, transparent 11px)",
-                            }
-                      }
+                    <MediaFrame
+                      src={imageUrl}
+                      alt={caseStudy.heroImage?.alt || `${caseStudy.client} — screenshot projekta`}
+                      aspectClassName="aspect-[3/4]"
                     />
                     <div className="flex items-baseline justify-between pt-5">
                       <div>

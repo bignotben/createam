@@ -136,3 +136,16 @@ export interface TeamMember {
   bio?: string
   order?: number
 }
+
+export interface BlogPost {
+  id: string
+  title: string
+  slug: string
+  excerpt?: string
+  coverImage?: Media | null
+  body?: RichText
+  author?: TeamMember
+  publishedDate?: string
+  tags?: { tag: string }[]
+  seo?: SeoFields
+}

@@ -2,6 +2,7 @@
 
 import { Fragment, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { mediaUrl } from "@/lib/payload";
 import type { HeaderGlobal, Service } from "@/lib/types";
@@ -14,10 +15,14 @@ export function Header({
   services: Service[];
 }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const pathname = usePathname();
   const logoSrc = mediaUrl(header.logo);
   const restNavItems = header.navItems.filter(
     (item) => item.href !== "/usluge",
   );
+  const uslugeActive = pathname.startsWith("/usluge");
+  const navLinkClass = (active: boolean) =>
+    `no-underline hover:text-ink ${active ? "text-accent" : "text-ink-muted"}`;
 
   return (
     <Fragment>
@@ -43,7 +48,7 @@ export function Header({
             <div className="group relative">
               <Link
                 href="/usluge"
-                className="inline-flex items-center gap-1.5 text-ink-muted no-underline hover:text-ink"
+                className={`inline-flex items-center gap-1.5 ${navLinkClass(uslugeActive)}`}
               >
                 Usluge <span className="text-[10px] transition-transform group-hover:rotate-180">▾</span>
               </Link>
@@ -65,7 +70,7 @@ export function Header({
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-ink-muted no-underline hover:text-ink"
+                className={navLinkClass(pathname === item.href)}
               >
                 {item.label}
               </Link>

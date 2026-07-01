@@ -7,6 +7,9 @@ import { Footer } from "@/components/Footer";
 import { getHeader } from "@/lib/header";
 import { getFooter } from "@/lib/footer";
 import { getServices } from "@/lib/services";
+import { getSiteSettings } from "@/lib/site-settings";
+import { mediaUrl } from "@/lib/payload";
+import { SITE_URL, SITE_NAME } from "@/lib/seo";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -14,10 +17,34 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["400", "500", "600", "700"],
 });
 
-export const metadata: Metadata = {
-  title: "Createam",
-  description: "Createam — web dizajn, development, brend i marketing, od jednog tima.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const siteSettings = await getSiteSettings();
+  const defaultTitle = siteSettings.defaultSeo?.metaTitle || SITE_NAME;
+  const defaultDescription =
+    siteSettings.defaultSeo?.metaDescription ||
+    "Createam — web dizajn, development, brend i marketing, od jednog tima.";
+  const ogImage = mediaUrl(siteSettings.defaultSeo?.ogImage);
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: { default: defaultTitle, template: `%s — ${SITE_NAME}` },
+    description: defaultDescription,
+    openGraph: {
+      title: defaultTitle,
+      description: defaultDescription,
+      siteName: SITE_NAME,
+      locale: "bs_BA",
+      type: "website",
+      images: ogImage ? [{ url: ogImage }] : undefined,
+    },
+    twitter: {
+      card: ogImage ? "summary_large_image" : "summary",
+      title: defaultTitle,
+      description: defaultDescription,
+      images: ogImage ? [ogImage] : undefined,
+    },
+  };
+}
 
 export default async function RootLayout({
   children,

@@ -14,3 +14,11 @@ export async function getServicesByCategory(): Promise<Record<ServiceCategory, S
     growth: services.filter((s) => s.category === 'growth'),
   }
 }
+
+export async function getServiceBySlug(slug: string): Promise<Service | undefined> {
+  const { docs } = await fetchCollection<Service>(
+    'services',
+    `?where[slug][equals]=${encodeURIComponent(slug)}&depth=0&limit=1`,
+  )
+  return docs[0]
+}
