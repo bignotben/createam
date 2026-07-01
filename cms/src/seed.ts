@@ -177,14 +177,12 @@ const run = async () => {
   await payload.updateGlobal({
     slug: 'header',
     data: {
-      logo: media.id,
+      // No logo image seeded on purpose: the design's header uses a text
+      // wordmark + accent dot when no logo upload is set.
       navItems: [
-        { label: 'Početna', href: '/' },
         { label: 'Usluge', href: '/usluge' },
         { label: 'Radovi', href: '/radovi' },
         { label: 'Tim', href: '/tim' },
-        { label: 'Blog', href: '/blog' },
-        { label: 'Kontakt', href: '/kontakt' },
       ],
       ctaLabel: 'Zakaži poziv',
       ctaHref: '/kontakt',
@@ -234,12 +232,12 @@ const run = async () => {
       problemsSectionSubtitle:
         'Imamo pun spektar usluga, ali suština je jednostavna — prepoznati pravi problem i riješiti ga pravim pristupom.',
       problems: [
-        { icon: 'globe', title: 'Vaš sajt vas ne predstavlja kako treba' },
-        { icon: 'bot', title: 'Ne znate da li vas AI alati uopšte "vide"' },
-        { icon: 'shopping-cart', title: 'Vaš katalog proizvoda nije vidljiv gdje ljudi kupuju' },
-        { icon: 'palette', title: 'Brend izgleda drugačije na svakom kanalu' },
-        { icon: 'clock', title: 'Nemate vremena da koordinirate pet različitih izvođača' },
-        { icon: 'lightbulb', title: 'Imate ideju za aplikaciju, ali ne znate odakle početi' },
+        { icon: 'monitor', title: 'Vaš sajt vas ne predstavlja kako treba' },
+        { icon: 'eye', title: 'Ne znate da li vas AI alati uopšte "vide"' },
+        { icon: 'grid', title: 'Vaš katalog proizvoda nije vidljiv gdje ljudi kupuju' },
+        { icon: 'diamond', title: 'Brend izgleda drugačije na svakom kanalu' },
+        { icon: 'coordinate', title: 'Nemate vremena da koordinirate pet različitih izvođača' },
+        { icon: 'target', title: 'Imate ideju za aplikaciju, ali ne znate odakle početi' },
       ],
       featuredCaseStudies: [caseStudy.id],
     },

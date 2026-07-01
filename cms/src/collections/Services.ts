@@ -4,6 +4,9 @@ import { seoField } from '@/fields/seo'
 
 export const Services: CollectionConfig = {
   slug: 'services',
+  access: {
+    read: () => true,
+  },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'category', 'order'],

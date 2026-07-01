@@ -4,6 +4,9 @@ import { seoField } from '@/fields/seo'
 
 export const CaseStudies: CollectionConfig = {
   slug: 'case-studies',
+  access: {
+    read: () => true,
+  },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'client', 'category', 'year', 'featured'],

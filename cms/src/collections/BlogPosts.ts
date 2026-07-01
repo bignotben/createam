@@ -4,6 +4,9 @@ import { seoField } from '@/fields/seo'
 
 export const BlogPosts: CollectionConfig = {
   slug: 'blog-posts',
+  access: {
+    read: () => true,
+  },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'author', 'publishedDate'],

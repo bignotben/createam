@@ -4,6 +4,9 @@ import { seoFields } from '@/fields/seo'
 
 export const SiteSettings: GlobalConfig = {
   slug: 'site-settings',
+  access: {
+    read: () => true,
+  },
   fields: [
     { name: 'contactEmail', type: 'text' },
     { name: 'contactPhone', type: 'text' },
