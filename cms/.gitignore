@@ -34,6 +34,9 @@ yarn-error.log*
 .env*
 !.env.example
 
+# uploaded media (managed by Payload, not version controlled)
+/media
+
 # vercel
 .vercel
 
