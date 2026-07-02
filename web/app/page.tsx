@@ -42,7 +42,7 @@ export default async function Home() {
       />
       {/* HERO */}
       <section className="relative overflow-hidden mx-auto max-w-[1280px] px-6 pb-16 pt-24 md:px-12 md:pb-24 md:pt-32">
-        <HeroLines side="right" color="var(--color-ink)" opacity={0.14} />
+        <HeroLines className="absolute inset-y-0 right-0 hidden w-[55%] text-ink sm:block md:w-[42%] lg:w-[560px]" />
         <div className="relative z-10">
           <div className="mb-16 flex items-baseline justify-between border-b border-border pb-5 text-sm uppercase tracking-[0.04em] text-ink-muted">
             <span>Digitalni studio</span>

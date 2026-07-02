@@ -1,70 +1,69 @@
 type HeroLinesProps = {
-  /** Stroke color. Accepts any CSS color, including var(--color-*) tokens. */
-  color?: string;
-  /** Overall opacity of the whole motif (the lines stay thin regardless). */
-  opacity?: number;
-  /** Which side of the hero the motif sits on. */
-  side?: "left" | "right";
+  /** Additional classes for positioning/sizing/color on the wrapper. */
   className?: string;
+  /** Mirror horizontally (for reuse on a left-side placement). */
+  flip?: boolean;
 };
 
-// Hand-authored flowing vertical curves — an original contour-like motif,
-// not derived from any existing brand asset. Each path is a single smooth
-// bezier chain, roughly vertical, drifting gently left/right as it descends.
 const PATHS = [
-  "M32,0 C60,90 6,170 42,270 C72,350 14,430 48,530 C76,610 20,690 44,790 C58,845 34,875 40,900",
-  "M92,0 C54,88 122,166 82,258 C50,336 108,414 70,512 C40,592 98,672 74,772 C60,832 90,864 80,900",
-  "M152,0 C190,108 132,186 164,284 C194,362 140,440 168,538 C194,616 146,694 166,792 C180,846 156,876 160,900",
-  "M212,0 C176,96 234,174 200,266 C170,344 224,422 196,520 C170,600 220,680 200,776 C190,838 210,868 205,900",
-  "M264,0 C232,92 286,170 252,262 C226,340 276,418 248,516 C222,596 266,676 248,772 C238,834 256,864 252,900",
+  "M40 -20 L40 150 C40 182 62 188 62 220 L62 400",
+  "M48 -20 L48 150 C48 182 70 188 70 220 L70 400",
+  "M56 -20 L56 150 C56 182 78 188 78 220 L78 400",
+  "M100 -20 L100 400",
+  "M110 -20 L110 400",
+  "M150 -20 L150 110 C150 142 172 148 172 180 L172 400",
+  "M158 -20 L158 110 C158 142 180 148 180 180 L180 400",
+  "M166 -20 L166 110 C166 142 188 148 188 180 L188 400",
+  "M215 -20 L215 400",
+  "M225 -20 L225 400",
+  "M265 -20 L265 170 C265 202 287 208 287 240 L287 400",
+  "M273 -20 L273 170 C273 202 295 208 295 240 L295 400",
+  "M281 -20 L281 170 C281 202 303 208 303 240 L303 400",
+  "M340 -20 L340 400",
+  "M375 -20 L375 130 C375 162 397 168 397 200 L397 400",
+  "M383 -20 L383 130 C383 162 405 168 405 200 L405 400",
+  "M391 -20 L391 130 C391 162 413 168 413 200 L413 400",
+  "M445 -20 L445 400",
+  "M455 -20 L455 400",
+  "M500 -20 L500 150 C500 182 522 188 522 220 L522 400",
+  "M508 -20 L508 150 C508 182 530 188 530 220 L530 400",
+  "M516 -20 L516 150 C516 182 538 188 538 220 L538 400",
+  "M575 -20 L575 400",
+  "M585 -20 L585 400",
+  "M620 -20 L620 140 C620 172 640 178 640 210 L640 400",
+  "M628 -20 L628 140 C628 172 648 178 648 210 L648 400",
+  "M636 -20 L636 140 C636 172 656 178 656 210 L656 400",
 ];
 
-// A couple of small nodes along two of the paths for a subtle circuit-like
-// accent, echoing the reference without copying it.
-const NODES = [
-  { cx: 42, cy: 270, r: 2.6 },
-  { cx: 48, cy: 530, r: 2.6 },
-  { cx: 168, cy: 538, r: 2.6 },
-  { cx: 166, cy: 792, r: 2.6 },
-];
+const GRADIENT_ID = "hero-lines-fade";
 
-export function HeroLines({
-  color = "var(--color-ink)",
-  opacity = 0.14,
-  side = "right",
-  className = "",
-}: HeroLinesProps) {
+export function HeroLines({ className = "", flip = false }: HeroLinesProps) {
   return (
-    <div
-      aria-hidden="true"
-      className={`hero-lines pointer-events-none absolute inset-y-0 hidden w-[140px] overflow-hidden sm:block sm:w-[180px] md:w-[240px] lg:w-[300px] ${
-        side === "left" ? "left-0" : "right-0"
-      } ${className}`}
-      style={{ opacity }}
-    >
-      <svg
-        viewBox="0 0 300 900"
-        preserveAspectRatio="none"
-        className="h-full w-full"
-        style={side === "left" ? { transform: "scaleX(-1)" } : undefined}
-        fill="none"
-      >
-        {PATHS.map((d, i) => (
-          <path
-            key={i}
-            d={d}
-            stroke={color}
-            strokeWidth="1"
-            strokeLinecap="round"
-            pathLength={1}
-            className="hero-lines-path"
-            style={{ animationDelay: `${i * 0.22}s`, animationDuration: `${2.4 + i * 0.3}s` }}
-          />
-        ))}
-        {NODES.map((node, i) => (
-          <circle key={i} cx={node.cx} cy={node.cy} r={node.r} fill={color} />
-        ))}
-      </svg>
+    <div aria-hidden="true" className={`hero-lines pointer-events-none overflow-hidden ${className}`}>
+      <div className={`h-full w-full ${flip ? "scale-x-[-1]" : ""}`}>
+        <div className="hero-lines-drift h-full w-full">
+          <svg
+            viewBox="0 0 680 380"
+            preserveAspectRatio="xMidYMid slice"
+            aria-hidden="true"
+            focusable="false"
+            className="h-full w-full"
+          >
+            <defs>
+              <linearGradient id={GRADIENT_ID} x1="0" y1="0" x2="680" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stopColor="currentColor" stopOpacity="0.03" />
+                <stop offset="0.5" stopColor="currentColor" stopOpacity="0.18" />
+                <stop offset="1" stopColor="currentColor" stopOpacity="0.55" />
+              </linearGradient>
+            </defs>
+            <g fill="none" stroke={`url(#${GRADIENT_ID})`} strokeWidth="5" strokeLinecap="round">
+              {PATHS.map((d) => (
+                <path key={d} d={d} />
+              ))}
+            </g>
+          </svg>
+        </div>
+      </div>
     </div>
   );
 }

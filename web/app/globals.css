@@ -59,23 +59,22 @@ body {
   }
 }
 
-.hero-lines-path {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation-name: hero-lines-draw;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
+.hero-lines-drift {
+  animation: hero-lines-drift 16s ease-in-out infinite;
 }
 
-@keyframes hero-lines-draw {
-  to {
-    stroke-dashoffset: 0;
+@keyframes hero-lines-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-lines-path {
+  .hero-lines-drift {
     animation: none;
-    stroke-dashoffset: 0;
   }
 }
