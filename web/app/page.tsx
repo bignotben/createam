@@ -41,9 +41,9 @@ export default async function Home() {
         }}
       />
       {/* HERO */}
-      <section className="relative overflow-hidden mx-auto max-w-[1280px] px-6 pb-16 pt-24 md:px-12 md:pb-24 md:pt-32">
+      <section className="relative overflow-hidden pb-16 pt-24 md:pb-24 md:pt-32">
         <HeroLines className="absolute inset-y-0 right-0 hidden w-[55%] text-ink sm:block md:w-[42%] lg:w-[560px]" />
-        <div className="relative z-10">
+        <div className="relative z-10 mx-auto max-w-[1280px] px-6 md:px-12">
           <div className="mb-16 flex items-baseline justify-between border-b border-border pb-5 text-sm uppercase tracking-[0.04em] text-ink-muted">
             <span>Digitalni studio</span>
             <span>Web · Brend · Rast</span>
@@ -69,7 +69,7 @@ export default async function Home() {
                 {homePage.heroCtaSecondary ? (
                   <Link
                     href="/radovi"
-                    className="whitespace-nowrap rounded-flat border border-ink px-[26px] py-3.5 text-base font-medium text-ink no-underline"
+                    className="whitespace-nowrap rounded-flat border border-ink bg-white px-[26px] py-3.5 text-base font-medium text-ink no-underline"
                   >
                     {homePage.heroCtaSecondary}
                   </Link>

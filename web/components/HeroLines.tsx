@@ -51,9 +51,9 @@ export function HeroLines({ className = "", flip = false }: HeroLinesProps) {
           >
             <defs>
               <linearGradient id={GRADIENT_ID} x1="0" y1="0" x2="680" y2="0" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="currentColor" stopOpacity="0.03" />
-                <stop offset="0.5" stopColor="currentColor" stopOpacity="0.18" />
-                <stop offset="1" stopColor="currentColor" stopOpacity="0.55" />
+                <stop offset="0" stopColor="currentColor" stopOpacity="0.02" />
+                <stop offset="0.5" stopColor="currentColor" stopOpacity="0.09" />
+                <stop offset="1" stopColor="currentColor" stopOpacity="0.28" />
               </linearGradient>
             </defs>
             <g fill="none" stroke={`url(#${GRADIENT_ID})`} strokeWidth="5" strokeLinecap="round">
