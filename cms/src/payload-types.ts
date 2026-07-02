@@ -253,6 +253,76 @@ export interface Service {
     metaTitle?: string | null;
     metaDescription?: string | null;
   };
+  /**
+   * Expanded template only — leave empty for the short template.
+   */
+  expertQuote?: {
+    text?: string | null;
+    attribution?: string | null;
+  };
+  contextTitle?: string | null;
+  contextBody?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  contextImage?: (string | null) | Media;
+  differentiators?:
+    | {
+        title: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  whatWeDo?:
+    | {
+        title: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  proofTitle?: string | null;
+  proofBody?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  proofImage?: (string | null) | Media;
+  processSteps?:
+    | {
+        stepTitle: string;
+        stepDescription?: string | null;
+        stepImage?: (string | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  faq?:
+    | {
+        question: string;
+        answer?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -623,6 +693,47 @@ export interface ServicesSelect<T extends boolean = true> {
     | {
         metaTitle?: T;
         metaDescription?: T;
+      };
+  expertQuote?:
+    | T
+    | {
+        text?: T;
+        attribution?: T;
+      };
+  contextTitle?: T;
+  contextBody?: T;
+  contextImage?: T;
+  differentiators?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  whatWeDo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  proofTitle?: T;
+  proofBody?: T;
+  proofImage?: T;
+  processSteps?:
+    | T
+    | {
+        stepTitle?: T;
+        stepDescription?: T;
+        stepImage?: T;
+        id?: T;
+      };
+  faq?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
       };
   updatedAt?: T;
   createdAt?: T;

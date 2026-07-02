@@ -18,7 +18,7 @@ export async function getServicesByCategory(): Promise<Record<ServiceCategory, S
 export async function getServiceBySlug(slug: string): Promise<Service | undefined> {
   const { docs } = await fetchCollection<Service>(
     'services',
-    `?where[slug][equals]=${encodeURIComponent(slug)}&depth=0&limit=1`,
+    `?where[slug][equals]=${encodeURIComponent(slug)}&depth=1&limit=1`,
   )
   return docs[0]
 }

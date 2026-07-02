@@ -105,6 +105,18 @@ export interface Service {
   howWeWork?: { stepTitle: string; stepDescription?: string }[]
   ctaText?: string
   seo?: SeoFields
+  // Expanded template fields — populated only for the 3 key services.
+  expertQuote?: { text?: string; attribution?: string }
+  contextTitle?: string
+  contextBody?: RichText
+  contextImage?: Media | null
+  differentiators?: { title: string; description?: string }[]
+  whatWeDo?: { title: string; description?: string }[]
+  proofTitle?: string
+  proofBody?: RichText
+  proofImage?: Media | null
+  processSteps?: { stepTitle: string; stepDescription?: string; stepImage?: Media | null }[]
+  faq?: { question: string; answer?: string }[]
 }
 
 export type CaseStudyCategory = 'web-design' | 'wordpress' | 'app' | 'brand-content' | 'seo-marketing'

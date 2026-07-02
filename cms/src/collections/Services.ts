@@ -44,5 +44,56 @@ export const Services: CollectionConfig = {
     },
     { name: 'ctaText', type: 'text' },
     seoField,
+    // Expanded template fields — optional. Left empty, the 7 short services
+    // are unaffected; the 3 key services (web-development, app-development,
+    // seo-marketing) fill these in and get the richer /usluge/[slug] layout.
+    {
+      name: 'expertQuote',
+      type: 'group',
+      admin: { description: 'Expanded template only — leave empty for the short template.' },
+      fields: [
+        { name: 'text', type: 'textarea' },
+        { name: 'attribution', type: 'text', defaultValue: 'Createam tim' },
+      ],
+    },
+    { name: 'contextTitle', type: 'text' },
+    { name: 'contextBody', type: 'richText' },
+    { name: 'contextImage', type: 'upload', relationTo: 'media' },
+    {
+      name: 'differentiators',
+      type: 'array',
+      fields: [
+        { name: 'title', type: 'text', required: true },
+        { name: 'description', type: 'textarea' },
+      ],
+    },
+    {
+      name: 'whatWeDo',
+      type: 'array',
+      fields: [
+        { name: 'title', type: 'text', required: true },
+        { name: 'description', type: 'textarea' },
+      ],
+    },
+    { name: 'proofTitle', type: 'text' },
+    { name: 'proofBody', type: 'richText' },
+    { name: 'proofImage', type: 'upload', relationTo: 'media' },
+    {
+      name: 'processSteps',
+      type: 'array',
+      fields: [
+        { name: 'stepTitle', type: 'text', required: true },
+        { name: 'stepDescription', type: 'textarea' },
+        { name: 'stepImage', type: 'upload', relationTo: 'media' },
+      ],
+    },
+    {
+      name: 'faq',
+      type: 'array',
+      fields: [
+        { name: 'question', type: 'text', required: true },
+        { name: 'answer', type: 'textarea' },
+      ],
+    },
   ],
 }
