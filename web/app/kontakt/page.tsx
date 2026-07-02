@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { ContactForm } from "@/components/ContactForm";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { JsonLd } from "@/components/JsonLd";
+import { HeroLines } from "@/components/HeroLines";
 
 const BREADCRUMB = [{ label: "Početna", href: "/" }, { label: "Kontakt" }];
 
@@ -40,15 +41,18 @@ export default async function KontaktPage() {
   return (
     <main>
       <JsonLd data={buildBreadcrumbJsonLd(BREADCRUMB)} />
-      <section className="mx-auto max-w-[1280px] px-6 pb-14 pt-24 md:px-12 md:pb-20 md:pt-32">
-        <Breadcrumb items={BREADCRUMB} />
-        <h1 className="max-w-[14ch] text-[clamp(44px,6.6vw,92px)] font-semibold leading-[1] tracking-[-0.035em]">
-          <span className="block">Spremni da</span>
-          <span className="block text-accent">počnemo?</span>
-        </h1>
-        <p className="mt-11 max-w-[46ch] text-xl leading-[1.55] text-ink-soft">
-          Zakažite besplatan poziv od 20 minuta. Bez obaveza, bez pritiska.
-        </p>
+      <section className="relative overflow-hidden mx-auto max-w-[1280px] px-6 pb-14 pt-24 md:px-12 md:pb-20 md:pt-32">
+        <HeroLines side="right" color="var(--color-accent)" opacity={0.1} />
+        <div className="relative z-10">
+          <Breadcrumb items={BREADCRUMB} />
+          <h1 className="max-w-[14ch] text-[clamp(44px,6.6vw,92px)] font-semibold leading-[1] tracking-[-0.035em]">
+            <span className="block">Spremni da</span>
+            <span className="block text-accent">počnemo?</span>
+          </h1>
+          <p className="mt-11 max-w-[46ch] text-xl leading-[1.55] text-ink-soft">
+            Zakažite besplatan poziv od 20 minuta. Bez obaveza, bez pritiska.
+          </p>
+        </div>
       </section>
 
       <section className="border-t border-border">

@@ -9,6 +9,7 @@ import { extractPlainText } from "@/components/RichText";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASection } from "@/components/CTASection";
 import { JsonLd } from "@/components/JsonLd";
+import { HeroLines } from "@/components/HeroLines";
 
 const CATEGORY_LABELS = {
   digital: "Digital",
@@ -53,26 +54,29 @@ export default async function ServiceDetailPage({
   return (
     <main>
       <JsonLd data={buildBreadcrumbJsonLd(breadcrumb)} />
-      <section className="mx-auto max-w-[1280px] px-6 pb-14 pt-24 md:px-12 md:pb-20 md:pt-32">
-        <Breadcrumb
-          items={breadcrumb}
-          meta={`${categoryIndex} — ${CATEGORY_LABELS[service.category]}`}
-        />
-        <h1 className="max-w-[15ch] text-[clamp(44px,6.6vw,92px)] font-semibold leading-[1] tracking-[-0.035em]">
-          <span className="block">{line1}</span>
-          {line2 ? <span className="block text-accent">{line2}</span> : null}
-        </h1>
-        <div className="mt-12 grid items-end gap-12 md:grid-cols-[1.5fr_1fr]">
-          <p className="max-w-[48ch] text-xl leading-[1.55] text-ink-soft">
-            {service.heroSubtitle}
-          </p>
-          <div>
-            <Link
-              href="/kontakt"
-              className="inline-block whitespace-nowrap rounded-flat bg-accent px-[26px] py-[15px] text-base font-medium text-bg no-underline"
-            >
-              Zakaži besplatan poziv
-            </Link>
+      <section className="relative overflow-hidden mx-auto max-w-[1280px] px-6 pb-14 pt-24 md:px-12 md:pb-20 md:pt-32">
+        <HeroLines side="left" color="var(--color-accent)" opacity={0.1} />
+        <div className="relative z-10">
+          <Breadcrumb
+            items={breadcrumb}
+            meta={`${categoryIndex} — ${CATEGORY_LABELS[service.category]}`}
+          />
+          <h1 className="max-w-[15ch] text-[clamp(44px,6.6vw,92px)] font-semibold leading-[1] tracking-[-0.035em]">
+            <span className="block">{line1}</span>
+            {line2 ? <span className="block text-accent">{line2}</span> : null}
+          </h1>
+          <div className="mt-12 grid items-end gap-12 md:grid-cols-[1.5fr_1fr]">
+            <p className="max-w-[48ch] text-xl leading-[1.55] text-ink-soft">
+              {service.heroSubtitle}
+            </p>
+            <div>
+              <Link
+                href="/kontakt"
+                className="inline-block whitespace-nowrap rounded-flat bg-accent px-[26px] py-[15px] text-base font-medium text-bg no-underline"
+              >
+                Zakaži besplatan poziv
+              </Link>
+            </div>
           </div>
         </div>
       </section>
