@@ -1,3 +1,16 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+  type MotionValue,
+} from "motion/react";
+
 type HeroLinesProps = {
   /** Additional classes for positioning/sizing/color on the wrapper. */
   className?: string;
@@ -37,9 +50,92 @@ const PATHS = [
 
 const GRADIENT_ID = "hero-lines-fade";
 
-export function HeroLines({ className = "", flip = false }: HeroLinesProps) {
+// Interleaved (not sliced) so each depth group spans the full width rather
+// than owning one screen region — this is purely a "how much does it move"
+// split for a soft parallax feel, not a visual grouping.
+const DEPTH_MULTIPLIERS = [0.3, 0.6, 1] as const;
+const DEPTH_GROUPS = DEPTH_MULTIPLIERS.map((_, depth) =>
+  PATHS.filter((_, i) => i % DEPTH_MULTIPLIERS.length === depth),
+);
+
+// Deliberately small — a few px of displacement is the whole brief.
+const MAX_MOUSE_PX = 6;
+const MAX_SCROLL_PX = 12;
+const SPRING = { stiffness: 50, damping: 20, mass: 0.6 };
+
+const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
+
+function HeroLinesGroup({
+  paths,
+  multiplier,
+  mouseX,
+  mouseY,
+  scrollProgress,
+  reduceMotion,
+}: {
+  paths: string[];
+  multiplier: number;
+  mouseX: MotionValue<number>;
+  mouseY: MotionValue<number>;
+  scrollProgress: MotionValue<number>;
+  reduceMotion: boolean;
+}) {
+  const x = useTransform(mouseX, (m) => (reduceMotion ? 0 : m * multiplier));
+  const y = useTransform([mouseY, scrollProgress], (latest) => {
+    if (reduceMotion) return 0;
+    const [m, s] = latest as [number, number];
+    return m * multiplier + s * multiplier * MAX_SCROLL_PX;
+  });
+
   return (
-    <div aria-hidden="true" className={`hero-lines pointer-events-none overflow-hidden ${className}`}>
+    <motion.g style={{ x, y }}>
+      {paths.map((d) => (
+        <path key={d} d={d} />
+      ))}
+    </motion.g>
+  );
+}
+
+export function HeroLines({ className = "", flip = false }: HeroLinesProps) {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+
+  const rawMouseX = useMotionValue(0);
+  const rawMouseY = useMotionValue(0);
+  const mouseX = useSpring(rawMouseX, SPRING);
+  const mouseY = useSpring(rawMouseY, SPRING);
+
+  const { scrollYProgress } = useScroll({
+    target: rootRef,
+    offset: ["start start", "end start"],
+  });
+  const scrollProgress = useSpring(scrollYProgress, SPRING);
+
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+    if (typeof window === "undefined" || !window.matchMedia("(pointer: fine)").matches) {
+      return; // touch / coarse pointer: no cursor to react to
+    }
+
+    function handleMouseMove(e: MouseEvent) {
+      const rect = rootRef.current?.getBoundingClientRect();
+      if (!rect || rect.width === 0 || rect.height === 0) return;
+      const dx = clamp((e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2), -1, 1);
+      const dy = clamp((e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2), -1, 1);
+      rawMouseX.set(dx * MAX_MOUSE_PX);
+      rawMouseY.set(dy * MAX_MOUSE_PX);
+    }
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [shouldReduceMotion, rawMouseX, rawMouseY]);
+
+  return (
+    <div
+      ref={rootRef}
+      aria-hidden="true"
+      className={`hero-lines pointer-events-none overflow-hidden ${className}`}
+    >
       <div className={`h-full w-full ${flip ? "scale-x-[-1]" : ""}`}>
         <div className="hero-lines-drift h-full w-full">
           <svg
@@ -57,8 +153,16 @@ export function HeroLines({ className = "", flip = false }: HeroLinesProps) {
               </linearGradient>
             </defs>
             <g fill="none" stroke={`url(#${GRADIENT_ID})`} strokeWidth="5" strokeLinecap="round">
-              {PATHS.map((d) => (
-                <path key={d} d={d} />
+              {DEPTH_GROUPS.map((paths, i) => (
+                <HeroLinesGroup
+                  key={i}
+                  paths={paths}
+                  multiplier={DEPTH_MULTIPLIERS[i]}
+                  mouseX={mouseX}
+                  mouseY={mouseY}
+                  scrollProgress={scrollProgress}
+                  reduceMotion={!!shouldReduceMotion}
+                />
               ))}
             </g>
           </svg>
