@@ -20,121 +20,85 @@ type ServiceSeed = {
 
 const servicesData: ServiceSeed[] = [
   {
-    title: 'Web dizajn',
-    slug: 'web-dizajn',
+    title: 'Web dizajn & development',
+    slug: 'web-dizajn-i-development',
     category: 'digital',
     order: 1,
-    heroTitle: 'Dizajn koji radi prije nego progovorite',
-    heroSubtitle: 'Prvi utisak se stvara u tri sekunde. Pobrinimo se da bude dobar.',
+    heroTitle: 'Sajtovi koji izgledaju sjajno i rade posao',
+    heroSubtitle:
+      'Dizajn i development pod istim krovom — od prvog vizuelnog koncepta do brzog, sigurnog sajta koji raste s vama.',
     intro:
-      'Dizajn nije samo "da bude lijepo". Dizajn je prvi utisak koji vaš klijent stvori o vama u tri sekunde. Radimo sajtove koji vode posjetioca kroz jasnu priču — od prve slike do klika na "Kontaktirajte nas" — uz vizuelni identitet koji ostaje u glavi.',
+      'Dizajn nije samo "da bude lijepo", a development nije samo "da radi". Kad dizajn i development rade odvojeno, nešto se izgubi u prevodu. Mi radimo oboje, zajedno, od prvog dana — sajt koji izgleda tačno kako je zamišljen i učitava se brzinom koju Google i vaši posjetioci traže.',
     whatYouGet: [
-      'Wireframe i vizuelni koncept',
-      'Responsive dizajn za sve uređaje',
-      'Dizajn sistem koji možete koristiti i dalje',
+      'Dizajn i development pod jednim krovom, bez koordinacije dvije firme',
+      'Brz, siguran sajt građen po mjeri',
+      'WordPress ili custom rješenje — birate vi',
     ],
     forWhom:
-      'Za brendove koji imaju sajt, ali osjećaju da ne izgleda kao "oni" — ili nemaju sajt uopšte i žele da krenu ispravno od početka.',
+      'Za brendove kojima treba i dizajn i development usklađeni od početka, ne dvije odvojene firme koje "približno" pogode jedna drugu.',
     howWeWork: [
-      { stepTitle: 'Istražujemo', stepDescription: 'Istražimo vaš brend, konkurenciju i ciljnu publiku' },
-      { stepTitle: 'Predlažemo', stepDescription: 'Predlažemo vizuelni koncept i strukturu stranica' },
-      { stepTitle: 'Finaliziramo', stepDescription: 'Finaliziramo dizajn spreman za development' },
+      { stepTitle: 'Istražujemo', stepDescription: 'Brend, ciljeve, konkurenciju i publiku' },
+      { stepTitle: 'Dizajniramo i gradimo', stepDescription: 'Paralelno, uz redovne preglede' },
+      { stepTitle: 'Testiramo i lansiramo', stepDescription: 'Brzina, SEO i sigurnost prije lansiranja' },
     ],
-    ctaText: 'Zakaži poziv i pokažimo ti kako bi tvoj sajt mogao izgledati.',
-  },
-  {
-    title: 'Web development',
-    slug: 'web-development',
-    category: 'digital',
-    order: 2,
-    heroTitle: 'Sajtovi izgrađeni da traju',
-    heroSubtitle: 'Brzina, sigurnost i kod koji raste s vašim poslom.',
-    intro:
-      'Dizajn bez dobrog developmenta je samo slika. Gradimo sajtove na modernim, brzim tehnologijama, optimizovane za SEO od prvog dana, sa kodom koji je lako održavati i proširivati kad vaš posao naraste.',
-    whatYouGet: ['Brz, siguran sajt', 'Čist kod bez tehničkog duga', 'Tehničku dokumentaciju za buduće izmjene'],
-    forWhom:
-      'Za brendove kojima treba sajt koji ne staje kad saobraćaj poraste, i koji se lako nadograđuje kad zatreba nova funkcionalnost.',
-    howWeWork: [
-      { stepTitle: 'Definišemo', stepDescription: 'Definišemo tehničke zahtjeve i strukturu' },
-      { stepTitle: 'Gradimo', stepDescription: 'Gradimo sajt u fazama, uz redovne preglede' },
-      { stepTitle: 'Testiramo', stepDescription: 'Testiramo brzinu, sigurnost i SEO prije lansiranja' },
-    ],
-    ctaText: 'Zakaži poziv i razgovarajmo o tehničkim zahtjevima vašeg projekta.',
+    ctaText: 'Spremni za sajt koji izgleda i radi kako treba?',
   },
   {
     title: 'WordPress dizajn & development',
     slug: 'wordpress',
     category: 'digital',
-    order: 3,
-    heroTitle: 'WordPress koji vi kontrolišete, ne obrnuto',
-    heroSubtitle: 'Elementor, WooCommerce, JetEngine — podešeno da radi za vas.',
+    order: 2,
+    heroTitle: 'WordPress koji vi kontrolišete — do zadnjeg detalja',
+    heroSubtitle:
+      'Custom WordPress rješenja sa vlastitim pluginovima kad gotova ne odgovaraju. Sami upravljate sadržajem, mi se brinemo za sve ispod haube.',
     intro:
-      'Za klijente kojima treba jednostavno upravljanje sadržajem bez pozivanja developera za svaku sitnicu. Radimo custom WordPress rješenja — Elementor za brzu izradu, JetEngine za dinamički sadržaj (nekretnine, katalozi, oglasi), WooCommerce za online prodaju.',
+      'Za klijente kojima treba jednostavno upravljanje sadržajem bez pozivanja developera za svaku sitnicu. Radimo custom WordPress rješenja — Elementor za brzu izradu, JetEngine za dinamički sadržaj, WooCommerce za online prodaju, a kad gotov plugin ne odgovara, napišemo vlastiti.',
     whatYouGet: [
       'Sajt koji sami ažurirate',
-      'Custom template-e prilagođene vašem poslu',
+      'Custom pluginove kad gotovi ne odgovaraju',
       'Obuku za korištenje admin panela',
     ],
     forWhom:
-      'Za biznise koji redovno mijenjaju sadržaj (nekretnine, katalozi proizvoda, oglasi) i ne žele plaćati developera za svaku sitnu izmjenu.',
+      'Za biznise koji redovno mijenjaju sadržaj (nekretnine, katalozi proizvoda, oglasi), ili im treba funkcionalnost koju gotovi pluginovi ne pokrivaju.',
     howWeWork: [
       { stepTitle: 'Analiziramo', stepDescription: 'Analiziramo koliko često i kako mijenjate sadržaj' },
-      { stepTitle: 'Gradimo', stepDescription: 'Gradimo template-e i strukturu prilagođenu tom procesu' },
+      { stepTitle: 'Gradimo', stepDescription: 'Gradimo template-e i custom pluginove po potrebi' },
       { stepTitle: 'Obučavamo', stepDescription: 'Obučavamo vas da sve dalje radite sami' },
     ],
-    ctaText: 'Zakaži poziv i pokažimo ti kako bi tvoj WordPress admin mogao izgledati.',
-  },
-  {
-    title: 'Custom funkcionalnosti & pluginovi',
-    slug: 'custom-funkcionalnosti',
-    category: 'digital',
-    order: 4,
-    heroTitle: 'Kad gotovo rješenje ne postoji, napravimo ga',
-    heroSubtitle: 'Rješenja skrojena tačno za vaš proces, ne za generičkog korisnika.',
-    intro:
-      'Kad gotov plugin skoro pa odgovara vašim potrebama, ali ne baš — tu počinjemo mi. Pišemo custom pluginove i funkcionalnosti koje rade tačno ono što vaš proces zahtijeva, bez nepotrebnog balasta.',
-    whatYouGet: [
-      'Rješenje skrojeno za vaš tok rada',
-      'Integracije sa postojećim sistemima (Odoo, Google Sheets, plaćanja i slično)',
-      'Podršku i dalji razvoj',
-    ],
-    forWhom: 'Za biznise sa specifičnim procesom koji im postojeći alati i pluginovi ne pokrivaju do kraja.',
-    howWeWork: [
-      { stepTitle: 'Mapiramo', stepDescription: 'Mapiramo vaš postojeći proces korak po korak' },
-      { stepTitle: 'Predlažemo', stepDescription: 'Predlažemo tehničko rješenje i arhitekturu' },
-      { stepTitle: 'Gradimo', stepDescription: 'Gradimo, testiramo i integrišemo sa vašim sistemima' },
-    ],
-    ctaText: 'Zakaži poziv i objasni nam problem — vjerovatno imamo rješenje.',
+    ctaText: 'Želite WordPress koji radi za vas, ne protiv vas?',
   },
   {
     title: 'App development',
     slug: 'app-development',
     category: 'digital',
-    order: 5,
-    heroTitle: 'Od ideje do aplikacije, brže nego ikad',
-    heroSubtitle: 'AI-ubrzan razvoj koji ne žrtvuje kvalitet.',
+    order: 3,
+    heroTitle: 'Od ideje do aplikacije — i svake funkcionalnosti koja joj treba',
+    heroSubtitle:
+      'AI-ubrzan razvoj aplikacija i custom funkcionalnosti po mjeri. Testirajte ideju u sedmicama, ne godinama.',
     intro:
-      'Ideje za aplikacije se danas mogu testirati i izgraditi brže nego ikad, uz AI-ubrzan razvoj koji ne žrtvuje kvalitet. Od prvog prototipa do funkcionalne aplikacije, vodimo vas kroz cijeli proces — vi donosite ideju, mi je pretvaramo u proizvod.',
+      'Ponekad vam treba cijela aplikacija. Ponekad samo jedna funkcionalnost koju nijedan gotov alat ne pokriva. AI-ubrzan razvoj mijenja računicu za oboje — prototip ili custom funkcionalnost koja je nekad trajala mjesece sad se pravi u sedmicama, uz kod koji prolazi kroz ljudsku kontrolu i standarde kvaliteta.',
     whatYouGet: [
       'Brz prototip za testiranje ideje',
-      'Funkcionalnu aplikaciju spremnu za korisnike',
+      'Custom funkcionalnosti koje gotovi alati ne pokrivaju',
       'Plan za dalji rast i nadogradnju',
     ],
-    forWhom: 'Za poduzetnike i biznise sa idejom za aplikaciju koji žele brzo testirati koncept prije velikog ulaganja.',
+    forWhom:
+      'Za poduzetnike i biznise sa idejom za aplikaciju, ili specifičnom funkcionalnošću koju gotovi alati i pluginovi ne pokrivaju.',
     howWeWork: [
-      { stepTitle: 'Definišemo', stepDescription: 'Definišemo ključnu funkcionalnost (MVP)' },
-      { stepTitle: 'Gradimo', stepDescription: 'Gradimo prototip uz AI-ubrzan development' },
+      { stepTitle: 'Definišemo', stepDescription: 'Definišemo obim — cijela aplikacija ili funkcionalnost' },
+      { stepTitle: 'Gradimo', stepDescription: 'Gradimo prototip ili funkcionalnost uz AI-ubrzan development' },
       { stepTitle: 'Testiramo', stepDescription: 'Testiramo sa stvarnim korisnicima i nadograđujemo' },
     ],
-    ctaText: 'Zakaži poziv i donesi ideju — pretvorimo je u plan.',
+    ctaText: 'Imate ideju ili funkcionalnost koja fali? Pretvorimo je u plan.',
   },
   {
     title: 'Grafički dizajn',
     slug: 'graficki-dizajn',
     category: 'brand',
-    order: 6,
-    heroTitle: 'Identitet koji se pamti',
-    heroSubtitle: 'Od logotipa do bilborda, dosljedno na svakoj tački dodira.',
+    order: 4,
+    heroTitle: 'Identitet koji ostaje u glavi',
+    heroSubtitle:
+      'Od logotipa do kompletnog vizuelnog identiteta — brend koji izgleda dosljedno i prepoznatljivo na svakoj tački dodira.',
     intro:
       'Prije nego što vas neko posjeti online, vidi vaš logo, boje, materijale. Radimo vizuelne identitete koji ostavljaju utisak i ostaju dosljedni na svakoj tački dodira — od vizit karte do bilborda.',
     whatYouGet: ['Logotip i vizuelni identitet', 'Brend smjernice (brand guidelines)', 'Materijale za štampu i digitalne kanale'],
@@ -144,13 +108,13 @@ const servicesData: ServiceSeed[] = [
       { stepTitle: 'Predlažemo', stepDescription: 'Predlažemo vizuelne koncepte' },
       { stepTitle: 'Finaliziramo', stepDescription: 'Finaliziramo identitet i smjernice za korištenje' },
     ],
-    ctaText: 'Zakaži poziv i pričajmo o tome kako bi vaš brend trebao izgledati.',
+    ctaText: 'Spremni za brend koji se pamti?',
   },
   {
     title: 'Fotografija',
     slug: 'fotografija',
     category: 'brand',
-    order: 7,
+    order: 5,
     heroTitle: 'Sadržaj koji stvarno pripada vama',
     heroSubtitle: 'Profesionalne fotografije, ne generički stock.',
     intro:
@@ -173,7 +137,7 @@ const servicesData: ServiceSeed[] = [
     title: 'Copywriting',
     slug: 'copywriting',
     category: 'brand',
-    order: 8,
+    order: 6,
     heroTitle: 'Riječi koje zvuče kao vi',
     heroSubtitle: 'Tekstovi koji objašnjavaju, ne samo popunjavaju prostor.',
     intro:
@@ -191,7 +155,7 @@ const servicesData: ServiceSeed[] = [
     title: 'Prevođenje',
     slug: 'prevodjenje',
     category: 'brand',
-    order: 9,
+    order: 7,
     heroTitle: 'Vaša poruka, na svakom jeziku',
     heroSubtitle: 'Prevod koji zvuči prirodno, ne mašinski.',
     intro:
@@ -210,7 +174,7 @@ const servicesData: ServiceSeed[] = [
     title: 'SEO & Marketing',
     slug: 'seo-marketing',
     category: 'growth',
-    order: 10,
+    order: 8,
     heroTitle: 'Vidljivost koja se mjeri, ne obećava',
     heroSubtitle: 'Google, ali i AI alati koji sve više odlučuju šta ljudi vide.',
     intro:
@@ -281,7 +245,7 @@ const run = async () => {
     },
   })
 
-  payload.logger.info('Seeding all 10 services...')
+  payload.logger.info('Seeding all 8 services...')
   const servicesBySlug: Record<string, { id: string }> = {}
   for (const s of servicesData) {
     const doc = await payload.create({
@@ -313,7 +277,7 @@ const run = async () => {
       title: 'Klijent X — redizajn sajta',
       slug: 'klijent-x-redizajn-sajta',
       client: 'Klijent X',
-      services: ['web-dizajn'],
+      services: ['web-dizajn-i-development'],
       year: '2026',
       category: 'web-design' as const,
       featured: true,
@@ -500,9 +464,7 @@ const run = async () => {
       linkColumns: [
         {
           heading: 'Usluge',
-          links: servicesData
-            .filter((s) => s.slug !== 'custom-funkcionalnosti')
-            .map((s) => ({ label: s.title, href: `/usluge/${s.slug}` })),
+          links: servicesData.map((s) => ({ label: s.title, href: `/usluge/${s.slug}` })),
         },
         {
           heading: 'Agencija',
@@ -562,7 +524,7 @@ const run = async () => {
       defaultSeo: {
         metaTitle: 'Createam — Web dizajn, development i marketing',
         metaDescription:
-          'Createam je tim koji radi web dizajn, development, WordPress, custom aplikacije, grafički dizajn, fotografiju, copywriting, prevođenje i SEO/marketing.',
+          'Createam je tim koji radi web dizajn i development, WordPress, aplikacije i custom funkcionalnosti, grafički dizajn, fotografiju, copywriting, prevođenje i SEO/marketing.',
         ogImage: media.id,
       },
     },

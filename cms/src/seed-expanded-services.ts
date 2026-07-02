@@ -16,191 +16,274 @@ type ExpandedServiceSeed = {
   faq: { question: string; answer: string }[]
 }
 
+// The 5 key services on a fresh install, per createam-services-v2-copy.md.
+// Run after `seed` (which creates the 8 base services). Matches by slug and
+// updates in place — safe to re-run.
 const expandedServicesData: ExpandedServiceSeed[] = [
   {
-    slug: 'web-development',
+    slug: 'web-dizajn-i-development',
     expertQuote: {
-      text: 'Većina sajtova ne pada zbog dizajna — padaju zbog onoga što se ne vidi: sporog koda, lošeg temelja, i prečica koje se osvete kad dođe pravi saobraćaj.',
+      text: 'Lijep sajt koji je spor je promašaj. Brz sajt koji izgleda loše je isto promašaj. Dizajn i development moraju nastati zajedno — inače jedno kvari drugo.',
       attribution: 'Createam tim',
     },
-    contextTitle: 'Brzina više nije bonus. To je preduslov.',
+    contextTitle: 'Dizajn i kod nisu dvije faze. To je jedan posao.',
     contextBody:
-      'Posjetilac odustaje nakon tri sekunde čekanja. Google rangira brže sajtove više. A svaki dodatni plugin, svaka prečica u kodu, svaki "zakrpljeni" dio — usporava vas i gomila tehnički dug koji se plaća kasnije, obično u najgorem trenutku.\n\nSajt izgrađen na čvrstim temeljima ne samo da je brži danas — lakše se održava, sigurniji je, i raste s vama umjesto da ga morate praviti ispočetka za dvije godine.',
+      'Kad dizajn radi jedna firma a development druga, gubi se nešto u prevodu — dizajn koji izgleda sjajno u Figmi ispadne spor ili nemoguć za izvedbu, a developer "približno" pogodi ono što je dizajner zamislio. Rezultat je sajt koji nije ni lijep ni brz kako je trebao biti.\n\nMi radimo oboje, zajedno, od početka. Dizajn nastaje znajući kako će se graditi; kod nastaje čuvajući svaki detalj dizajna. Ishod je sajt koji izgleda tačno kako je zamišljen — i učitava se brzinom koju Google i vaši posjetioci traže.',
     differentiators: [
       {
-        title: 'Čist kod, ne prečice',
-        description:
-          'Pišemo održiv kod od prvog dana, ne krpimo gotova rješenja koja se raspadnu pod opterećenjem.',
+        title: 'Jedan tim, od skice do koda',
+        description: 'Nema gubitka u prevodu između dizajnera i developera.',
       },
       {
-        title: 'SEO ugrađen, ne dodat kasnije',
-        description:
-          'Struktura, brzina i tehnička optimizacija su dio temelja, ne naknadna misao.',
+        title: 'Dizajn koji se može izvesti',
+        description: 'Svaki vizuelni detalj je promišljen s obzirom na brzinu i izvedbu.',
       },
       {
-        title: 'Građeno da raste',
-        description:
-          'Kod koji se lako proširuje kad zatreba nova funkcionalnost, bez rušenja postojećeg.',
+        title: 'SEO i brzina od prvog dana',
+        description: 'Ne dodajemo ih na kraju, ugrađeni su u temelj.',
       },
       {
-        title: 'Dokumentovano',
+        title: 'WordPress ili custom',
         description:
-          'Dobijate tehničku dokumentaciju, pa niste zaključani za nas ako želite dalje sami ili s drugim timom.',
+          'Biramo pristup prema tome trebate li sami upravljati sadržajem ili vam treba maksimalna sloboda.',
       },
     ],
     whatWeDo: [
-      { title: 'Custom razvoj', description: 'Sajtovi građeni po mjeri, ne šablonizirani.' },
+      { title: 'Vizuelni dizajn', description: 'Koncept, tipografija, boje, dizajn sistem.' },
+      { title: 'Responsive izrada', description: 'Savršeno na desktopu, tabletu i telefonu.' },
+      { title: 'Custom development', description: 'Sajt građen po mjeri, ne šablon.' },
+      { title: 'WordPress opcija', description: 'Kad želite sami upravljati sadržajem.' },
       { title: 'Optimizacija brzine', description: 'Core Web Vitals, učitavanje, keširanje.' },
-      {
-        title: 'Tehnički SEO temelj',
-        description: 'Struktura, indeksiranje, čitljivost za pretraživače i AI.',
-      },
-      {
-        title: 'Sigurnost',
-        description: 'Zaštita od uobičajenih ranjivosti, sigurne forme i podaci.',
-      },
-      {
-        title: 'Integracije',
-        description: 'Povezivanje sa sistemima koje već koristite (plaćanja, CRM, alati).',
-      },
-      { title: 'Održavanje i podrška', description: 'Nakon lansiranja ostajemo dostupni.' },
+      { title: 'Tehnički SEO temelj', description: 'Struktura i čitljivost za pretraživače i AI.' },
     ],
     proofTitle: 'Iz prakse',
-    proofBody:
-      'Svaki sajt koji izgradimo prolazi kroz iste standarde brzine i kvaliteta koda — bez obzira je li riječ o prezentacionom sajtu ili kompleksnoj platformi.',
+    proofBody: 'Svaki sajt prolazi kroz iste standarde — dizajn koji predstavlja brend i kod koji izdrži rast.',
     processSteps: [
-      {
-        stepTitle: 'Tehnička analiza',
-        stepDescription: 'Definišemo zahtjeve, opterećenje, integracije.',
-      },
-      {
-        stepTitle: 'Arhitektura',
-        stepDescription: 'Biramo tehnologiju i strukturu prilagođenu projektu.',
-      },
-      {
-        stepTitle: 'Razvoj u fazama',
-        stepDescription: 'Gradimo uz redovne preglede, ne "veliki prasak" na kraju.',
-      },
-      {
-        stepTitle: 'Testiranje',
-        stepDescription: 'Brzina, sigurnost, SEO, ponašanje na svim uređajima.',
-      },
+      { stepTitle: 'Razgovor i istraživanje', stepDescription: 'Brend, ciljevi, konkurencija, publika.' },
+      { stepTitle: 'Vizuelni koncept', stepDescription: 'Dizajn i struktura stranica na potvrdu.' },
+      { stepTitle: 'Development', stepDescription: 'Gradimo u fazama, uz redovne preglede.' },
+      { stepTitle: 'Testiranje', stepDescription: 'Brzina, SEO, sigurnost, svi uređaji.' },
       { stepTitle: 'Lansiranje', stepDescription: 'Kontrolisano, sa praćenjem prvih rezultata.' },
-      { stepTitle: 'Podrška', stepDescription: 'Održavanje, nadogradnje, rast.' },
+      { stepTitle: 'Podrška', stepDescription: 'Održavanje i nadogradnje.' },
     ],
     faq: [
       {
-        question: 'Koliko traje izrada sajta?',
+        question: 'Radite li i dizajn i development, ili samo jedno?',
+        answer: 'Oboje, zajedno — to je i poenta. Ne morate koordinirati dvije firme.',
+      },
+      {
+        question: 'WordPress ili custom sajt — šta je bolje za mene?',
         answer:
-          'Ovisi o obimu — prezentacioni sajt obično 3-5 sedmica, kompleksnije platforme duže. Tačan rok dobijate uz ponudu.',
+          'Ovisi trebate li sami mijenjati sadržaj (WordPress) ili vam treba maksimalna sloboda i performanse (custom). Savjetujemo na pozivu.',
       },
       {
-        question: 'Koju tehnologiju koristite?',
-        answer: 'Biramo je prema projektu, ne obrnuto. Prioritet su brzina, SEO i lakoća održavanja.',
-      },
-      {
-        question: 'Šta ako već imam sajt koji je spor?',
-        answer: 'Radimo audit i predlažemo da li se isplati optimizovati postojeći ili graditi novi.',
+        question: 'Koliko traje izrada?',
+        answer: 'Prezentacioni sajt obično 3-5 sedmica, kompleksniji duže. Tačan rok uz ponudu.',
       },
       {
         question: 'Mogu li kasnije sam mijenjati sadržaj?',
-        answer: 'Da — gradimo tako da netehnički ljudi mogu upravljati sadržajem, uz obuku.',
+        answer: 'Da, gradimo tako da netehnički ljudi upravljaju sadržajem, uz obuku.',
       },
       {
-        question: 'Šta se dešava nakon lansiranja?',
-        answer: 'Ostajemo dostupni za održavanje i nadogradnje; niste prepušteni sami sebi.',
+        question: 'Šta nakon lansiranja?',
+        answer: 'Ostajemo dostupni za održavanje, izmjene i rast.',
+      },
+    ],
+  },
+  {
+    slug: 'wordpress',
+    expertQuote: {
+      text: 'WordPress je moćan tačno onoliko koliko je dobro postavljen. Nagomilani pluginovi ga uspore i razbiju; pravi custom pristup ga čini brzim i vašim.',
+      attribution: 'Createam tim',
+    },
+    contextTitle: 'Većina WordPress sajtova je zbir tuđih pluginova.',
+    contextBody:
+      'Lako je sastaviti WordPress sajt od desetak gotovih pluginova — dok se ne uspori, ne razbije nakon apdejta, ili ne udari u zid jer nijedan plugin ne radi baš ono što vam treba. Tada počinje muka.\n\nMi pristupamo drugačije: koristimo WordPress tamo gdje je najjači (lako upravljanje sadržajem), a kad gotov plugin ne odgovara — napišemo vlastiti, tačno za vaš proces. Rezultat je sajt koji je brz, stabilan, i radi baš ono što treba, a vi ga i dalje sami ažurirate.',
+    differentiators: [
+      {
+        title: 'Custom umjesto nagomilanog',
+        description: 'Pišemo vlastite pluginove kad gotovi ne valjaju, ne krpimo desetak tuđih.',
+      },
+      { title: 'Brzina i stabilnost', description: 'Čist setup koji ne puca nakon svakog apdejta.' },
+      {
+        title: 'Vi upravljate sadržajem',
+        description: 'Elementor, JetEngine i custom template-i prilagođeni vama.',
+      },
+      {
+        title: 'Integracije',
+        description: 'Povezivanje sa sistemima koje koristite (WooCommerce, plaćanja, vanjski alati).',
+      },
+    ],
+    whatWeDo: [
+      { title: 'Custom WordPress izrada', description: 'Teme i template-i po mjeri.' },
+      { title: 'Custom pluginovi', description: 'Funkcionalnost koju gotovi pluginovi ne pokrivaju.' },
+      { title: 'WooCommerce', description: 'Online prodaja, prilagođena vašem katalogu.' },
+      { title: 'JetEngine dinamički sadržaj', description: 'Nekretnine, katalozi, oglasi.' },
+      { title: 'Elementor setup', description: 'Da sami lako mijenjate stranice.' },
+      { title: 'Održavanje', description: 'Apdejti, sigurnost, backup.' },
+    ],
+    proofTitle: 'Kad gotovo ne odgovara',
+    proofBody:
+      'Kad standardni plugin skoro pa radi posao ali ne baš — tu napišemo vlastito rješenje, tačno za vaš tok rada.',
+    processSteps: [
+      { stepTitle: 'Analiza sadržaja i procesa', stepDescription: 'Kako i koliko često mijenjate sadržaj.' },
+      { stepTitle: 'Postavka', stepDescription: 'Biramo teme, pluginove, i šta treba custom.' },
+      { stepTitle: 'Development', stepDescription: 'Izrada template-a i vlastitih pluginova.' },
+      { stepTitle: 'Testiranje', stepDescription: 'Brzina, stabilnost, ponašanje nakon apdejta.' },
+      { stepTitle: 'Obuka', stepDescription: 'Pokazujemo vam kako da sve sami radite.' },
+      { stepTitle: 'Podrška', stepDescription: 'Održavanje i dalji razvoj.' },
+    ],
+    faq: [
+      {
+        question: 'Zašto custom plugin umjesto gotovog?',
+        answer:
+          'Kad gotov plugin ne radi baš ono što treba, ili usporava sajt — vlastiti plugin je brži, čistiji i radi tačno za vaš proces.',
+      },
+      {
+        question: 'Hoće li se sajt pokvariti nakon WordPress apdejta?',
+        answer: 'Zato radimo čist setup i testiramo — cilj je stabilnost, ne kula od gotovih pluginova.',
+      },
+      {
+        question: 'Mogu li sam mijenjati sadržaj?',
+        answer: 'Da — to je glavna prednost WordPress-a, i postavljamo ga tačno za to, uz obuku.',
+      },
+      {
+        question: 'Radite li WooCommerce prodavnice?',
+        answer: 'Da, uključujući prilagodbe za specifične kataloge i procese.',
+      },
+      {
+        question: 'Možete li preuzeti postojeći WordPress sajt?',
+        answer: 'Da — radimo audit i predlažemo šta popraviti ili prepraviti.',
       },
     ],
   },
   {
     slug: 'app-development',
     expertQuote: {
-      text: 'Najveći trošak kod aplikacija nije razvoj — to je vrijeme potrošeno na pogrešnu ideju. Zato prvo gradimo najmanju verziju koja dokazuje da ideja radi.',
+      text: 'Bilo da je riječ o cijeloj aplikaciji ili jednoj funkcionalnosti koja fali — posao je isti: napraviti nešto što ne postoji gotovo, tačno kako treba.',
       attribution: 'Createam tim',
     },
-    contextTitle: 'Ideje su jeftine. Pogrešno uloženo vrijeme nije.',
+    contextTitle: 'Kad gotovo rješenje ne postoji.',
     contextBody:
-      'Klasičan razvoj aplikacije znači mjesece čekanja i veliko ulaganje prije nego uopšte saznate hoće li ljudi koristiti to što gradite. Do trenutka kad je gotova, tržište se možda već pomjerilo.\n\nAI-ubrzan razvoj mijenja tu računicu. Prototip koji nekad traži mjesece sad se pravi u sedmicama — dovoljno brzo da testirate ideju sa stvarnim korisnicima prije nego uložite u punu verziju. Brzina, ali bez žrtvovanja kvaliteta koda.',
+      'Ponekad vam treba cijela aplikacija. Ponekad samo jedna funkcionalnost koju nijedan gotov alat ne pokriva. U oba slučaja, klasičan razvoj znači mjesece čekanja i veliko ulaganje prije nego uopšte vidite radi li stvar.\n\nAI-ubrzan razvoj mijenja računicu. Prototip ili custom funkcionalnost koja je nekad trajala mjesece sad se pravi u sedmicama — dovoljno brzo da testirate prije nego uložite u puno. Brzina, ali uz kod koji prolazi kroz ljudsku kontrolu i standarde kvaliteta.',
     differentiators: [
       {
         title: 'MVP prvo',
-        description:
-          'Gradimo najmanju verziju koja dokazuje ideju, pa nadograđujemo na osnovu stvarnih korisnika.',
+        description: 'Najmanja verzija koja dokazuje ideju, pa nadogradnja na osnovu stvarnih korisnika.',
       },
+      { title: 'AI-ubrzan, ne AI-nemaran', description: 'Brzina od AI alata, kvalitet od ljudske kontrole.' },
       {
-        title: 'AI-ubrzan, ne AI-nemaran',
-        description:
-          'Brzina od AI alata, ali kod prolazi kroz ljudsku kontrolu i standarde kvaliteta.',
+        title: 'Aplikacija ili funkcionalnost',
+        description: 'Isti pristup za cijeli proizvod ili jedan dio koji fali.',
       },
-      {
-        title: 'Vi vidite napredak',
-        description: 'Radite s nama kroz proces, ne čekate "veliko otkrivanje" na kraju.',
-      },
-      {
-        title: 'Građeno za rast',
-        description: 'Prototip nije bačen posao; temelj je na kojem se gradi puna aplikacija.',
-      },
+      { title: 'Građeno za rast', description: 'Prototip je temelj pune verzije, ne bačen posao.' },
     ],
     whatWeDo: [
-      {
-        title: 'Definisanje MVP-a',
-        description: 'Izdvajamo ključnu funkcionalnost vrijednu testiranja.',
-      },
+      { title: 'Definisanje MVP-a', description: 'Ključna funkcionalnost vrijedna testiranja.' },
       { title: 'Brzi prototip', description: 'Funkcionalna verzija za rane korisnike.' },
-      {
-        title: 'Web i mobilne aplikacije',
-        description: 'Prema tome gdje su vaši korisnici.',
-      },
-      {
-        title: 'Testiranje sa korisnicima',
-        description: 'Stvarne povratne informacije prije velikog ulaganja.',
-      },
-      {
-        title: 'Iteracija i nadogradnja',
-        description: 'Rast na osnovu podataka, ne pretpostavki.',
-      },
-      {
-        title: 'Skaliranje',
-        description: 'Priprema aplikacije za veći broj korisnika kad ideja proradi.',
-      },
+      { title: 'Web i mobilne aplikacije', description: 'Prema tome gdje su vaši korisnici.' },
+      { title: 'Custom funkcionalnosti', description: 'Pojedinačne funkcije koje gotovi alati ne pokrivaju.' },
+      { title: 'Integracije', description: 'Povezivanje sa postojećim sistemima i podacima.' },
+      { title: 'Skaliranje', description: 'Priprema za veći broj korisnika kad ideja proradi.' },
     ],
     proofTitle: 'Kako to izgleda',
     proofBody:
-      'Pristup je isti bez obzira na ideju — brzo do funkcionalnog prototipa, pa pametno nadograđivanje na osnovu onoga što korisnici stvarno rade.',
+      'Isti pristup bez obzira na obim — brzo do funkcionalnog, pa pametna nadogradnja na osnovu stvarnog korištenja.',
     processSteps: [
-      { stepTitle: 'Razgovor o ideji', stepDescription: 'Razumijemo problem koji aplikacija rješava.' },
-      {
-        stepTitle: 'Definisanje MVP-a',
-        stepDescription: 'Biramo ključnu funkcionalnost za prvu verziju.',
-      },
-      { stepTitle: 'Prototip', stepDescription: 'Brzi razvoj funkcionalne verzije.' },
-      { stepTitle: 'Testiranje', stepDescription: 'Stavljamo je pred stvarne korisnike.' },
-      { stepTitle: 'Iteracija', stepDescription: 'Dorađujemo na osnovu povratnih informacija.' },
-      { stepTitle: 'Rast', stepDescription: 'Nadograđujemo prema punoj aplikaciji.' },
+      { stepTitle: 'Razgovor', stepDescription: 'Razumijemo problem koji treba riješiti.' },
+      { stepTitle: 'Definisanje obima', stepDescription: 'Cijela aplikacija ili konkretna funkcionalnost.' },
+      { stepTitle: 'Prototip / izrada', stepDescription: 'Brzi razvoj funkcionalne verzije.' },
+      { stepTitle: 'Testiranje', stepDescription: 'Sa stvarnim korisnicima ili u stvarnom procesu.' },
+      { stepTitle: 'Iteracija', stepDescription: 'Dorada na osnovu povratnih informacija.' },
+      { stepTitle: 'Rast', stepDescription: 'Nadogradnja i skaliranje.' },
     ],
     faq: [
       {
-        question: 'Koliko košta razvoj aplikacije?',
-        answer:
-          'Ovisi o obimu MVP-a. Cilj nam je da prva verzija bude dovoljno mala da brzo testirate ideju bez velikog ulaganja.',
+        question: 'Radite li i cijele aplikacije i pojedinačne funkcionalnosti?',
+        answer: 'Da — isti pristup, samo različit obim. Od jedne funkcije do cijelog proizvoda.',
       },
       {
         question: 'Šta znači "AI-ubrzan razvoj"?',
         answer:
-          'Koristimo AI alate da ubrzamo dijelove razvoja, ali kod prolazi kroz ljudsku kontrolu — brzina bez gubitka kvaliteta.',
+          'Koristimo AI alate da ubrzamo razvoj, ali kod prolazi kroz ljudsku kontrolu — brzina bez gubitka kvaliteta.',
       },
       {
-        question: 'Imam samo ideju, ne tehničko znanje. Je li to problem?',
-        answer: 'Ne. Vi donosite ideju i poznavanje problema; mi se bavimo tehničkim dijelom.',
+        question: 'Imam samo ideju, bez tehničkog znanja. Problem?',
+        answer: 'Ne. Vi donosite ideju i poznavanje problema; tehnički dio je na nama.',
+      },
+      {
+        question: 'Koliko košta?',
+        answer: 'Ovisi o obimu. Cilj je da prva verzija bude dovoljno mala da brzo testirate bez velikog ulaganja.',
       },
       {
         question: 'Šta ako prototip pokaže da ideja ne radi?',
-        answer:
-          'To je uspjeh, ne neuspjeh — saznali ste to za sedmice i mali novac umjesto godine i veliki.',
+        answer: 'To je uspjeh — saznali ste za sedmice i malo novca umjesto za godinu i puno.',
+      },
+    ],
+  },
+  {
+    slug: 'graficki-dizajn',
+    expertQuote: {
+      text: 'Brend nije logo. Logo je samo prvi znak. Brend je osjećaj koji ostaje kad se sve — boje, tipografija, ton — slože u istu priču.',
+      attribution: 'Createam tim',
+    },
+    contextTitle: 'Ljudi vide vaš brend prije nego pročitaju šta radite.',
+    contextBody:
+      'Prvi utisak se stvara u sekundi — prije nego iko pročita ijednu riječ. Logo, boje, tipografija govore o vama prije vas samih. Ako izgledaju neuredno ili nedosljedno (jedno na sajtu, drugo na Instagramu, treće na vizit karti), poruka je nesvjesna ali jasna: "ovdje se ne pazi na detalje".\n\nDobar vizuelni identitet radi suprotno — gradi povjerenje prije prvog razgovora, i ostaje dosljedan svuda gdje vas neko sretne.',
+    differentiators: [
+      { title: 'Identitet, ne samo logo', description: 'Gradimo cijeli sistem, ne jednu sličicu.' },
+      {
+        title: 'Dosljednost svuda',
+        description: 'Smjernice koje drže brend istim na sajtu, mrežama i štampi.',
       },
       {
-        question: 'Mogu li kasnije proširiti aplikaciju?',
-        answer: 'Da — prototip gradimo kao temelj za punu verziju, ne kao jednokratno rješenje.',
+        title: 'Strategija prije estetike',
+        description: 'Dizajn koji odražava ko ste, ne samo šta je trenutno u modi.',
+      },
+      {
+        title: 'Upotrebljivo',
+        description: 'Dobijate materijale i smjernice koje stvarno možete koristiti dalje.',
+      },
+    ],
+    whatWeDo: [
+      { title: 'Logotip', description: 'Glavni znak i varijacije.' },
+      { title: 'Vizuelni identitet', description: 'Boje, tipografija, elementi.' },
+      { title: 'Brend smjernice', description: 'Pravila koja drže brend dosljednim.' },
+      { title: 'Materijali za štampu', description: 'Vizit karte, leci, ambalaža.' },
+      { title: 'Digitalni materijali', description: 'Za sajt i društvene mreže.' },
+      { title: 'Redizajn', description: 'Osvježavanje postojećeg brenda.' },
+    ],
+    proofTitle: 'Dosljednost na djelu',
+    proofBody:
+      'Svaki identitet gradimo kao sistem — tako da izgleda jednako dobro na ekranu i na papiru, danas i za dvije godine.',
+    processSteps: [
+      { stepTitle: 'Istraživanje', stepDescription: 'Brend, vrijednosti, konkurencija, publika.' },
+      { stepTitle: 'Koncept', stepDescription: 'Vizuelni pravci na izbor.' },
+      { stepTitle: 'Razrada', stepDescription: 'Finaliziranje odabranog pravca.' },
+      { stepTitle: 'Sistem', stepDescription: 'Boje, tipografija, varijacije, smjernice.' },
+      { stepTitle: 'Materijali', stepDescription: 'Priprema za štampu i digitalne kanale.' },
+      { stepTitle: 'Predaja', stepDescription: 'Svi fajlovi i smjernice, spremni za korištenje.' },
+    ],
+    faq: [
+      {
+        question: 'Radite li samo logo ili cijeli identitet?',
+        answer: 'Oboje — ali preporučujemo cijeli identitet, jer logo sam bez sistema brzo postane nedosljedan.',
+      },
+      {
+        question: 'Imam stari logo, treba mi osvježenje. Može?',
+        answer: 'Da, redizajn postojećeg brenda je česta usluga.',
+      },
+      {
+        question: 'Dobijam li fajlove za štampu?',
+        answer: 'Da — sve u odgovarajućim formatima, plus smjernice za korištenje.',
+      },
+      {
+        question: 'Koliko traje?',
+        answer: 'Ovisi o obimu — od logotipa do kompletnog identiteta sa materijalima. Rok uz ponudu.',
+      },
+      {
+        question: 'Radite li i dizajn sajta?',
+        answer: 'Da, i često ide zajedno — grafički identitet i web dizajn se prirodno nadovezuju.',
       },
     ],
   },
@@ -216,18 +299,14 @@ const expandedServicesData: ExpandedServiceSeed[] = [
     differentiators: [
       {
         title: 'SEO + AI, ne jedno ili drugo',
-        description:
-          'Optimizujemo za klasične pretraživače I za AI alate, jer ljudi koriste oboje.',
+        description: 'Optimizujemo za klasične pretraživače I za AI alate, jer ljudi koriste oboje.',
       },
       {
         title: 'Sadržaj kao izvor, ne kao punjenje',
         description:
           'Pišemo tako da vas AI prepozna kao autoritet vrijedan citiranja, ne samo kao gomilu ključnih riječi.',
       },
-      {
-        title: 'Mjerljivo',
-        description: 'Pratimo rezultate brojevima, ne obećanjima i "impresijama".',
-      },
+      { title: 'Mjerljivo', description: 'Pratimo rezultate brojevima, ne obećanjima i "impresijama".' },
       {
         title: 'Tehnika + sadržaj + feed',
         description: 'Pokrivamo cijeli lanac vidljivosti, od brzine sajta do product feed-ova.',
@@ -244,22 +323,14 @@ const expandedServicesData: ExpandedServiceSeed[] = [
       },
       {
         title: 'AI optimizacija',
-        description:
-          'Struktuiranje sadržaja da vas AI alati prepoznaju i citiraju kao izvor.',
+        description: 'Struktuiranje sadržaja da vas AI alati prepoznaju i citiraju kao izvor.',
       },
       {
         title: 'Feed management (nova usluga)',
-        description:
-          'Optimizacija product feed-ova za Google Shopping, Meta katalog i marketplace-ove.',
+        description: 'Optimizacija product feed-ova za Google Shopping, Meta katalog i marketplace-ove.',
       },
-      {
-        title: 'Marketinške kampanje',
-        description: 'Plaćene kampanje mjerene prodajom, ne klikovima.',
-      },
-      {
-        title: 'Izvještavanje',
-        description: 'Redovni, jasni izvještaji o tome šta se mijenja i zašto.',
-      },
+      { title: 'Marketinške kampanje', description: 'Plaćene kampanje mjerene prodajom, ne klikovima.' },
+      { title: 'Izvještavanje', description: 'Redovni, jasni izvještaji o tome šta se mijenja i zašto.' },
     ],
     proofTitle: 'Vidljivost koja se mjeri',
     proofBody:
@@ -274,15 +345,9 @@ const expandedServicesData: ExpandedServiceSeed[] = [
         stepTitle: 'Tehnička optimizacija',
         stepDescription: 'Popravljamo temelj (brzina, struktura, indeksiranje).',
       },
-      {
-        stepTitle: 'Sadržaj',
-        stepDescription: 'Kreiramo/optimizujemo sadržaj za pretraživače i AI.',
-      },
+      { stepTitle: 'Sadržaj', stepDescription: 'Kreiramo/optimizujemo sadržaj za pretraživače i AI.' },
       { stepTitle: 'Kampanje', stepDescription: 'Pokrećemo plaćene kampanje gdje ima smisla.' },
-      {
-        stepTitle: 'Mjerenje i dorada',
-        stepDescription: 'Pratimo, izvještavamo, prilagođavamo.',
-      },
+      { stepTitle: 'Mjerenje i dorada', stepDescription: 'Pratimo, izvještavamo, prilagođavamo.' },
     ],
     faq: [
       {
@@ -301,13 +366,11 @@ const expandedServicesData: ExpandedServiceSeed[] = [
       },
       {
         question: 'Garantujete li prvo mjesto na Google-u?',
-        answer:
-          'Ne, i budite oprezni prema svakome ko to garantuje. Radimo na mjerljivom, održivom rastu vidljivosti.',
+        answer: 'Ne, i budite oprezni prema svakome ko to garantuje. Radimo na mjerljivom, održivom rastu vidljivosti.',
       },
       {
         question: 'Kako izvještavate o rezultatima?',
-        answer:
-          'Redovnim, jasnim izvještajima — šta se promijenilo, šta radimo dalje, i šta to znači za vas.',
+        answer: 'Redovnim, jasnim izvještajima — šta se promijenilo, šta radimo dalje, i šta to znači za vas.',
       },
     ],
   },

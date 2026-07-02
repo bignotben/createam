@@ -7,7 +7,7 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 
 export const metadata = buildMetadata({
   title: "Usluge",
-  description: "Deset usluga, tri cjeline, jedan tim koji ih sve povezuje u jedno rješenje.",
+  description: "Osam usluga, tri cjeline, jedan tim koji ih sve povezuje u jedno rješenje.",
   path: "/usluge",
 });
 
@@ -41,7 +41,7 @@ export default async function UslugePage() {
         <Reveal>
           <div className="mb-16 flex items-baseline justify-between border-b border-border pb-5 text-sm uppercase tracking-[0.04em] text-ink-muted">
             <span>Usluge</span>
-            <span>Pregled — 10 usluga · 3 cjeline</span>
+            <span>Pregled — 8 usluga · 3 cjeline</span>
           </div>
           <h1 className="max-w-[15ch] text-[clamp(44px,6.6vw,92px)] font-semibold leading-[1] tracking-[-0.035em]">
             <span className="block">Sve što vam treba,</span>
@@ -54,7 +54,7 @@ export default async function UslugePage() {
               marketing zajedno.
             </p>
             <p className="max-w-[34ch] text-[17px] leading-[1.55] text-ink-muted">
-              Deset usluga, tri cjeline, jedan tim koji ih sve povezuje u jedno rješenje.
+              Osam usluga, tri cjeline, jedan tim koji ih sve povezuje u jedno rješenje.
             </p>
           </div>
         </Reveal>
