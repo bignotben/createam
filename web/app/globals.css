@@ -77,4 +77,13 @@ body {
   .hero-lines-drift {
     animation: none;
   }
+
+  /* Global scroll-reveal opt-out: Reveal/RevealGroup set opacity/transform
+     inline via Framer Motion, but an !important stylesheet rule still wins
+     over inline styles, so this single block covers every instance. */
+  .reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }

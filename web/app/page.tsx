@@ -10,6 +10,7 @@ import { ProblemIcon } from "@/components/icons";
 import { JsonLd } from "@/components/JsonLd";
 import { MediaFrame } from "@/components/MediaFrame";
 import { HeroLines } from "@/components/HeroLines";
+import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 
 const CATEGORY_LABELS = {
   digital: "Digital",
@@ -103,7 +104,7 @@ export default async function Home() {
 
       {/* PROBLEMS */}
       <section className="mx-auto max-w-[1280px] px-6 py-20 md:px-12 md:py-32">
-        <div className="mb-16 grid items-end gap-12 md:grid-cols-2">
+        <Reveal className="mb-16 grid items-end gap-12 md:grid-cols-2">
           <div>
             <span className="text-sm uppercase tracking-[0.04em] text-ink-muted">
               (01) — Problemi
@@ -115,10 +116,10 @@ export default async function Home() {
           <p className="max-w-[44ch] text-lg leading-relaxed text-ink-muted">
             {homePage.problemsSectionSubtitle}
           </p>
-        </div>
-        <div className="grid grid-cols-1 border-l border-t border-border md:grid-cols-3">
+        </Reveal>
+        <RevealGroup className="grid grid-cols-1 border-l border-t border-border md:grid-cols-3">
           {homePage.problems.map((problem, i) => (
-            <div
+            <RevealItem
               key={i}
               className="flex min-h-[200px] flex-col gap-7 border-b border-r border-border p-9"
             >
@@ -128,26 +129,26 @@ export default async function Home() {
               <span className="text-xl font-medium leading-tight tracking-[-0.01em]">
                 {problem.title}
               </span>
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </section>
 
       {/* USLUGE */}
       <section className="border-t border-border bg-bg-alt">
         <div className="mx-auto max-w-[1280px] px-6 py-18 md:px-12 md:py-28">
-          <div className="mb-14 flex flex-wrap items-baseline justify-between gap-4">
+          <Reveal as="div" className="mb-14 flex flex-wrap items-baseline justify-between gap-4">
             <h2 className="text-[clamp(32px,4vw,52px)] font-semibold tracking-[-0.03em]">
               Usluge
             </h2>
             <span className="text-sm uppercase tracking-[0.04em] text-ink-muted">
               (02) — Šta radimo
             </span>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          </Reveal>
+          <RevealGroup className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {(Object.keys(CATEGORY_LABELS) as (keyof typeof CATEGORY_LABELS)[]).map(
               (category, i) => (
-                <div
+                <RevealItem
                   key={category}
                   className="flex min-h-[380px] flex-col border border-border bg-bg p-10"
                 >
@@ -179,17 +180,17 @@ export default async function Home() {
                       <span className="text-[13px] text-ink-faint">(nova usluga u ponudi)</span>
                     </div>
                   ) : null}
-                </div>
+                </RevealItem>
               ),
             )}
-          </div>
+          </RevealGroup>
         </div>
       </section>
 
       {/* TIM TEASER */}
       <section className="border-t border-border">
         <div className="mx-auto max-w-[1280px] px-6 py-20 md:px-12 md:py-32">
-          <div className="grid items-center gap-16 md:grid-cols-[1fr_1.3fr]">
+          <Reveal className="grid items-center gap-16 md:grid-cols-[1fr_1.3fr]">
             <div>
               <span className="text-sm uppercase tracking-[0.04em] text-ink-muted">
                 (03) — Tim
@@ -210,7 +211,7 @@ export default async function Home() {
                 Upoznajte tim <span className="text-accent">→</span>
               </Link>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -218,7 +219,7 @@ export default async function Home() {
       {featuredCaseStudies.length > 0 ? (
         <section className="border-t border-border bg-bg-alt">
           <div className="mx-auto max-w-[1280px] px-6 py-18 md:px-12 md:py-28">
-            <div className="mb-14 flex flex-wrap items-end justify-between gap-4">
+            <Reveal as="div" className="mb-14 flex flex-wrap items-end justify-between gap-4">
               <div>
                 <span className="text-sm uppercase tracking-[0.04em] text-ink-muted">
                   (04) — Radovi
@@ -233,46 +234,47 @@ export default async function Home() {
               >
                 Svi projekti <span className="text-accent">→</span>
               </Link>
-            </div>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            </Reveal>
+            <RevealGroup className="grid grid-cols-1 gap-6 md:grid-cols-3">
               {featuredCaseStudies.map((caseStudy) => {
                 const imageUrl = mediaSizeUrl(caseStudy.heroImage, "card");
                 const tag = caseStudy.servicesUsed?.map((s) => s.title).join(" · ");
                 return (
-                  <Link
-                    key={caseStudy.id}
-                    href={`/radovi/${caseStudy.slug}`}
-                    className="flex flex-col no-underline"
-                  >
-                    <MediaFrame
-                      src={imageUrl}
-                      alt={caseStudy.heroImage?.alt || `${caseStudy.client} — screenshot projekta`}
-                      aspectClassName="aspect-[3/4]"
-                    />
-                    <div className="flex items-baseline justify-between pt-5">
-                      <div>
-                        <div className="text-[22px] font-semibold tracking-[-0.02em] text-ink">
-                          {caseStudy.client}
+                  <RevealItem key={caseStudy.id} className="flex flex-col">
+                    <Link href={`/radovi/${caseStudy.slug}`} className="contents no-underline">
+                      <MediaFrame
+                        src={imageUrl}
+                        alt={caseStudy.heroImage?.alt || `${caseStudy.client} — screenshot projekta`}
+                        aspectClassName="aspect-[3/4]"
+                      />
+                      <div className="flex items-baseline justify-between pt-5">
+                        <div>
+                          <div className="text-[22px] font-semibold tracking-[-0.02em] text-ink">
+                            {caseStudy.client}
+                          </div>
+                          {tag ? (
+                            <div className="mt-1 text-[15px] text-ink-muted">{tag}</div>
+                          ) : null}
                         </div>
-                        {tag ? (
-                          <div className="mt-1 text-[15px] text-ink-muted">{tag}</div>
+                        {caseStudy.year ? (
+                          <span className="text-sm text-ink-faint">{caseStudy.year}</span>
                         ) : null}
                       </div>
-                      {caseStudy.year ? (
-                        <span className="text-sm text-ink-faint">{caseStudy.year}</span>
-                      ) : null}
-                    </div>
-                  </Link>
+                    </Link>
+                  </RevealItem>
                 );
               })}
-            </div>
+            </RevealGroup>
           </div>
         </section>
       ) : null}
 
       {/* FINAL CTA */}
       <section className="bg-dark text-bg">
-        <div className="mx-auto max-w-[1280px] px-6 py-24 text-center md:px-12 md:py-38">
+        <Reveal
+          as="div"
+          className="mx-auto max-w-[1280px] px-6 py-24 text-center md:px-12 md:py-38"
+        >
           <h2 className="mx-auto max-w-[14ch] text-[clamp(44px,6.5vw,92px)] font-semibold leading-none tracking-[-0.035em]">
             Spremni da <span className="text-accent">počnemo?</span>
           </h2>
@@ -287,7 +289,7 @@ export default async function Home() {
               Zakaži poziv
             </Link>
           </div>
-        </div>
+        </Reveal>
       </section>
     </main>
   );
