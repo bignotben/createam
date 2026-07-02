@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { mediaUrl } from "@/lib/payload";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import type { HeaderGlobal, Service } from "@/lib/types";
 
 export function Header({
@@ -76,6 +77,8 @@ export function Header({
               </Link>
             ))}
           </div>
+
+          <ThemeToggle />
 
           <button
             onClick={() => setDrawerOpen(true)}

@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: light;
+
   --color-bg: #fafaf8;
   --color-bg-alt: #f0f0ec;
   --color-ink: #1a1a1a;
@@ -15,6 +17,33 @@
   --color-dark-faint: #8a8a84;
   --color-dark-label: #6b6b62;
   --color-dark-border: #333330;
+
+  /* Constant — always a light warm off-white, regardless of theme. For text
+     placed on the permanently-dark bg-dark surface (footer, CTA panels),
+     which stays dark in both themes. Using --color-bg there would break in
+     dark mode, since --color-bg itself becomes near-black. */
+  --color-on-dark: #f5f1ec;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --color-bg: #1a1715;
+  --color-bg-alt: #221e1a;
+  --color-ink: #f4f0ea;
+  --color-ink-muted: #a39889;
+  --color-ink-soft: #d3ccc3;
+  --color-ink-faint: #6f665c;
+  --color-border: #35302b;
+  --color-border-soft: #29251f;
+  /* Brighter/lighter than the light-theme terracotta so it stays vivid and
+     passes WCAG AA (~5:1) both as text on the dark bg and under text-bg
+     (near-black) button labels. */
+  --color-accent: #e2723f;
+  /* Deliberately darker than --color-bg above, not the same value — footer
+     and CTA panels must read as a distinct, deeper surface instead of
+     merging into the page background. */
+  --color-dark: #0d0b0a;
 }
 
 @theme inline {
@@ -32,6 +61,7 @@
   --color-dark-faint: var(--color-dark-faint);
   --color-dark-label: var(--color-dark-label);
   --color-dark-border: var(--color-dark-border);
+  --color-on-dark: var(--color-on-dark);
 
   --font-sans: var(--font-space-grotesk);
 
@@ -43,6 +73,7 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 ::selection {

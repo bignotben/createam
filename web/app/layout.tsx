@@ -58,7 +58,18 @@ export default async function RootLayout({
   ]);
 
   return (
-    <html lang="bs" className={`${spaceGrotesk.variable}`}>
+    <html lang="bs" className={`${spaceGrotesk.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Blocking (non-module, non-deferred) so it runs before first paint —
+            static export has no server to set the class, so this is the only
+            way to avoid a flash of the wrong theme. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.classList.add('dark');}}catch(e){}})();",
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <Header header={header} services={services} />
         {children}

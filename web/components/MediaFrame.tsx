@@ -1,5 +1,5 @@
 const PLACEHOLDER_PATTERN =
-  "repeating-linear-gradient(135deg, #ECECE6 0px, #ECECE6 1px, transparent 1px, transparent 11px)";
+  "repeating-linear-gradient(135deg, var(--color-border-soft) 0px, var(--color-border-soft) 1px, transparent 1px, transparent 11px)";
 
 // Renders a real <img> with alt text when a URL is available (so the image
 // is actually indexable/accessible), falling back to a decorative CSS

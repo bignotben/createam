@@ -8,7 +8,7 @@ export function Footer({ footer }: { footer: FooterGlobal }) {
       <div className="mx-auto max-w-[1280px] px-6 py-14 md:px-12 md:py-20">
         <div className="grid grid-cols-2 gap-12 md:grid-cols-4">
           <div className="col-span-2 md:col-span-1">
-            <span className="flex items-center gap-2.5 text-xl font-semibold tracking-[-0.02em] text-bg">
+            <span className="flex items-center gap-2.5 text-xl font-semibold tracking-[-0.02em] text-on-dark">
               <span className="inline-block h-[9px] w-[9px] rounded-full bg-accent" />
               Createam
             </span>
@@ -29,7 +29,7 @@ export function Footer({ footer }: { footer: FooterGlobal }) {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="text-dark-muted no-underline hover:text-bg"
+                    className="text-dark-muted no-underline hover:text-on-dark"
                   >
                     {link.label}
                   </Link>

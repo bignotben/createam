@@ -70,7 +70,7 @@ export default async function Home() {
                 {homePage.heroCtaSecondary ? (
                   <Link
                     href="/radovi"
-                    className="whitespace-nowrap rounded-flat border border-ink bg-white px-[26px] py-3.5 text-base font-medium text-ink no-underline"
+                    className="whitespace-nowrap rounded-flat border border-ink bg-bg px-[26px] py-3.5 text-base font-medium text-ink no-underline"
                   >
                     {homePage.heroCtaSecondary}
                   </Link>
@@ -270,7 +270,7 @@ export default async function Home() {
       ) : null}
 
       {/* FINAL CTA */}
-      <section className="bg-dark text-bg">
+      <section className="border-t border-dark-border bg-dark text-on-dark">
         <Reveal
           as="div"
           className="mx-auto max-w-[1280px] px-6 py-24 text-center md:px-12 md:py-38"

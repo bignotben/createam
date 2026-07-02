@@ -15,7 +15,7 @@ export function CTASection({
   buttonHref: string;
 }) {
   return (
-    <section className="bg-dark text-bg">
+    <section className="border-t border-dark-border bg-dark text-on-dark">
       <Reveal
         as="div"
         className="mx-auto max-w-[1280px] px-6 py-24 text-center md:px-12 md:py-36"
