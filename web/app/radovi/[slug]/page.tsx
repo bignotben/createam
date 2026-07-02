@@ -9,6 +9,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASection } from "@/components/CTASection";
 import { JsonLd } from "@/components/JsonLd";
 import { MediaFrame } from "@/components/MediaFrame";
+import { HeroArrival } from "@/components/HeroArrival";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 
 export async function generateStaticParams() {
@@ -81,13 +82,13 @@ export default async function CaseStudyDetailPage({
       </section>
 
       <section className="mx-auto max-w-[1280px] px-6 md:px-12">
-        <Reveal as="div">
+        <HeroArrival>
           <MediaFrame
             src={heroImageUrl}
             alt={caseStudy.heroImage?.alt || caseStudy.title}
             aspectClassName="aspect-video"
           />
-        </Reveal>
+        </HeroArrival>
       </section>
 
       <section className="mx-auto max-w-[1280px] px-6 py-14 md:px-12 md:py-20">

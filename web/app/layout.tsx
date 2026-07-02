@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { PageTransition } from "@/components/PageTransition";
 import { getHeader } from "@/lib/header";
 import { getFooter } from "@/lib/footer";
 import { getServices } from "@/lib/services";
@@ -72,7 +73,7 @@ export default async function RootLayout({
       </head>
       <body className="min-h-full flex flex-col">
         <Header header={header} services={services} />
-        {children}
+        <PageTransition>{children}</PageTransition>
         <Footer footer={footer} />
       </body>
     </html>

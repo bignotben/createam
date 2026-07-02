@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 
 import { mediaSizeUrl } from "@/lib/payload";
 import { MediaFrame } from "@/components/MediaFrame";
 import { RevealGroup, RevealItem } from "@/components/Reveal";
+import { CaseStudyCardLink } from "@/components/CaseStudyCardLink";
 import type { CaseStudy, CaseStudyCategory } from "@/lib/types";
 
 const FILTERS: { label: string; value: CaseStudyCategory | "all" }[] = [
@@ -49,7 +49,7 @@ export function CaseStudyGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
           const tag = caseStudy.servicesUsed?.map((s) => s.title).join(" · ");
           return (
             <RevealItem key={caseStudy.id}>
-              <Link
+              <CaseStudyCardLink
                 href={`/radovi/${caseStudy.slug}`}
                 className="group flex flex-col border border-border no-underline transition-[background,border-color,transform] hover:-translate-y-1 hover:border-ink hover:bg-bg-alt"
               >
@@ -71,7 +71,7 @@ export function CaseStudyGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
                     →
                   </span>
                 </div>
-              </Link>
+              </CaseStudyCardLink>
             </RevealItem>
           );
         })}
