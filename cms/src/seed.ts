@@ -477,6 +477,35 @@ const run = async () => {
     })
   }
 
+  payload.logger.info('Seeding legal pages...')
+  const legalPagesData = [
+    {
+      title: 'Politika privatnosti',
+      slug: 'politika-privatnosti',
+      body: 'Ovo je placeholder tekst za politiku privatnosti. Zamijenite ga stvarnim sadržajem u Payload adminu prije lansiranja sajta.\n\nCreatam prikuplja samo one lične podatke koje nam dobrovoljno pošaljete putem kontakt forme (ime, email, i sadržaj upita), a koristimo ih isključivo za odgovaranje na vaš upit.\n\nVaši podaci se ne dijele sa trećim stranama osim ako je to neophodno za pružanje usluge (npr. servis za slanje email upita).',
+    },
+    {
+      title: 'Uslovi korištenja',
+      slug: 'uslovi-koristenja',
+      body: 'Ovo je placeholder tekst za uslove korištenja. Zamijenite ga stvarnim sadržajem u Payload adminu prije lansiranja sajta.\n\nKorištenjem ovog sajta prihvatate ove uslove korištenja u cjelosti. Sadržaj sajta je vlasništvo Createam-a i ne smije se kopirati bez dozvole.\n\nCreatam zadržava pravo izmjene ovih uslova u bilo kojem trenutku, o čemu ćete biti obaviješteni objavom nove verzije na ovoj stranici.',
+    },
+  ]
+
+  for (const p of legalPagesData) {
+    await payload.create({
+      collection: 'pages',
+      data: {
+        title: p.title,
+        slug: p.slug,
+        body: lexicalFromText(p.body),
+        seo: {
+          metaTitle: p.title,
+          metaDescription: `${p.title} — Createam`,
+        },
+      },
+    })
+  }
+
   payload.logger.info('Seeding globals...')
   await payload.updateGlobal({
     slug: 'header',
@@ -486,6 +515,7 @@ const run = async () => {
       navItems: [
         { label: 'Usluge', href: '/usluge' },
         { label: 'Radovi', href: '/radovi' },
+        { label: 'Blog', href: '/blog' },
         { label: 'Tim', href: '/tim' },
       ],
       ctaLabel: 'Zakaži poziv',
@@ -509,14 +539,15 @@ const run = async () => {
           links: [
             { label: 'Tim', href: '/tim' },
             { label: 'Radovi', href: '/radovi' },
+            { label: 'Blog', href: '/blog' },
             { label: 'Kontakt', href: '/kontakt' },
           ],
         },
         {
           heading: 'Pravno',
           links: [
-            { label: 'Politika privatnosti', href: '#' },
-            { label: 'Uslovi korištenja', href: '#' },
+            { label: 'Politika privatnosti', href: '/politika-privatnosti' },
+            { label: 'Uslovi korištenja', href: '/uslovi-koristenja' },
           ],
         },
       ],

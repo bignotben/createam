@@ -58,7 +58,11 @@ export default async function BlogPage() {
                     bordered={false}
                   />
                   <div className="flex flex-1 flex-col gap-3 px-6 py-6">
-                    {date ? <span className="text-sm text-ink-faint">{date}</span> : null}
+                    {date || post.author ? (
+                      <span className="text-sm text-ink-faint">
+                        {[date, post.author?.name].filter(Boolean).join(" · ")}
+                      </span>
+                    ) : null}
                     <span className="text-xl font-semibold tracking-[-0.01em] text-ink group-hover:text-accent">
                       {post.title}
                     </span>

@@ -11,6 +11,7 @@ import { Services } from './collections/Services'
 import { CaseStudies } from './collections/CaseStudies'
 import { BlogPosts } from './collections/BlogPosts'
 import { TeamMembers } from './collections/TeamMembers'
+import { Pages } from './collections/Pages'
 import { Header } from './globals/Header'
 import { Footer } from './globals/Footer'
 import { HomePage } from './globals/HomePage'
@@ -26,7 +27,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Services, CaseStudies, BlogPosts, TeamMembers],
+  collections: [Users, Media, Services, CaseStudies, BlogPosts, TeamMembers, Pages],
   globals: [Header, Footer, HomePage, SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

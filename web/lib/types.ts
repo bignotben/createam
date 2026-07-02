@@ -149,3 +149,11 @@ export interface BlogPost {
   tags?: { tag: string }[]
   seo?: SeoFields
 }
+
+export interface Page {
+  id: string
+  title: string
+  slug: string
+  body?: RichText
+  seo?: SeoFields
+}
