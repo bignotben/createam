@@ -12,6 +12,7 @@ import { CTASection } from "@/components/CTASection";
 import { JsonLd } from "@/components/JsonLd";
 import { MediaFrame } from "@/components/MediaFrame";
 import { FAQAccordion } from "@/components/FAQAccordion";
+import { ProblemIcon } from "@/components/icons";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 
 const CATEGORY_LABELS = {
@@ -19,6 +20,10 @@ const CATEGORY_LABELS = {
   brand: "Brend & sadržaj",
   growth: "Rast",
 } as const;
+
+// Cycled purely for visual density on the "šta konkretno radimo" grid —
+// not tied to item meaning, just gives each card a distinct icon.
+const WHAT_WE_DO_ICONS = ["monitor", "grid", "diamond", "coordinate", "target", "eye"] as const;
 
 export async function generateStaticParams() {
   const services = await getServices();
@@ -142,7 +147,7 @@ export default async function ServiceDetailPage({
           ) : null}
 
           {service.differentiators && service.differentiators.length > 0 ? (
-            <section className="border-t border-border bg-bg-alt">
+            <section className="border-t border-border">
               <div className="mx-auto max-w-[1280px] px-6 py-14 md:px-12 md:py-20">
                 <Reveal
                   as="div"
@@ -155,18 +160,29 @@ export default async function ServiceDetailPage({
                     (02) — Pristup
                   </span>
                 </Reveal>
-                <RevealGroup className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                {/* Horizontal band / list rhythm — deliberately distinct from
+                    the bordered card grid below it. */}
+                <RevealGroup as="div" className="border-t border-border">
                   {service.differentiators.map((d, i) => (
-                    <RevealItem key={i} className="border border-border bg-bg p-8">
-                      <div className="mb-4 text-sm text-accent">
+                    <RevealItem
+                      key={i}
+                      className={`grid grid-cols-1 gap-3 border-b border-border px-2 py-8 md:grid-cols-[120px_1fr] md:gap-10 md:px-6 md:py-10 ${
+                        i % 2 === 1 ? "bg-bg-alt" : ""
+                      }`}
+                    >
+                      <span className="text-[clamp(32px,4vw,52px)] font-semibold leading-none text-accent/40">
                         {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <div>
+                        <h3 className="mb-2 text-xl font-semibold tracking-[-0.01em]">
+                          {d.title}
+                        </h3>
+                        {d.description ? (
+                          <p className="max-w-[60ch] text-[15px] leading-relaxed text-ink-muted">
+                            {d.description}
+                          </p>
+                        ) : null}
                       </div>
-                      <h3 className="mb-2 text-xl font-semibold tracking-[-0.01em]">{d.title}</h3>
-                      {d.description ? (
-                        <p className="text-[15px] leading-relaxed text-ink-muted">
-                          {d.description}
-                        </p>
-                      ) : null}
                     </RevealItem>
                   ))}
                 </RevealGroup>
@@ -175,7 +191,7 @@ export default async function ServiceDetailPage({
           ) : null}
 
           {service.whatWeDo && service.whatWeDo.length > 0 ? (
-            <section className="border-t border-border">
+            <section className="border-t border-border bg-bg-alt">
               <div className="mx-auto max-w-[1280px] px-6 py-14 md:px-12 md:py-20">
                 <Reveal
                   as="div"
@@ -188,13 +204,17 @@ export default async function ServiceDetailPage({
                     (03) — Usluge
                   </span>
                 </Reveal>
-                <RevealGroup className="grid grid-cols-1 border-l border-t border-border sm:grid-cols-2 md:grid-cols-3">
+                {/* 2×3 card grid with icons — compact and visually denser
+                    than the "kako radimo drugačije" band list above. */}
+                <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                   {service.whatWeDo.map((w, i) => (
                     <RevealItem
                       key={i}
-                      className="flex flex-col gap-3 border-b border-r border-border p-8"
+                      className="flex flex-col gap-4 border border-border bg-bg p-8"
                     >
-                      <span className="text-xs text-accent">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="text-accent">
+                        <ProblemIcon icon={WHAT_WE_DO_ICONS[i % WHAT_WE_DO_ICONS.length]} />
+                      </span>
                       <h3 className="text-lg font-semibold tracking-[-0.01em]">{w.title}</h3>
                       {w.description ? (
                         <p className="text-[15px] leading-relaxed text-ink-muted">
@@ -251,36 +271,27 @@ export default async function ServiceDetailPage({
                     (05) — Kako radimo
                   </span>
                 </Reveal>
-                <div className="flex flex-col gap-14 md:gap-20">
+                {/* Text-only by design — no step images. */}
+                <RevealGroup className="grid grid-cols-1 border-t border-border md:grid-cols-3">
                   {service.processSteps.map((step, i) => (
-                    <Reveal
+                    <RevealItem
                       key={i}
-                      as="div"
-                      className="grid gap-8 md:grid-cols-2 md:items-center md:gap-14"
+                      className="border-b border-border px-0 py-10 md:px-8 md:first:pl-0 md:last:pr-0"
                     >
-                      <div className={i % 2 === 1 ? "md:order-2" : undefined}>
-                        <div className="mb-4 text-sm text-accent">
-                          {String(i + 1).padStart(2, "0")}
-                        </div>
-                        <h3 className="mb-3 text-2xl font-semibold tracking-[-0.02em]">
-                          {step.stepTitle}
-                        </h3>
-                        {step.stepDescription ? (
-                          <p className="max-w-[42ch] text-base leading-relaxed text-ink-muted">
-                            {step.stepDescription}
-                          </p>
-                        ) : null}
+                      <div className="mb-4 text-sm text-accent">
+                        {String(i + 1).padStart(2, "0")}
                       </div>
-                      <div className={i % 2 === 1 ? "md:order-1" : undefined}>
-                        <MediaFrame
-                          src={mediaUrl(step.stepImage)}
-                          alt={step.stepImage?.alt || step.stepTitle}
-                          aspectClassName="aspect-[4/3]"
-                        />
-                      </div>
-                    </Reveal>
+                      <h3 className="mb-3 text-xl font-semibold tracking-[-0.01em]">
+                        {step.stepTitle}
+                      </h3>
+                      {step.stepDescription ? (
+                        <p className="max-w-[32ch] text-[15px] leading-relaxed text-ink-muted">
+                          {step.stepDescription}
+                        </p>
+                      ) : null}
+                    </RevealItem>
                   ))}
-                </div>
+                </RevealGroup>
               </div>
             </section>
           ) : null}

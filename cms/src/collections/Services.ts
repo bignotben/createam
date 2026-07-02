@@ -44,9 +44,9 @@ export const Services: CollectionConfig = {
     },
     { name: 'ctaText', type: 'text' },
     seoField,
-    // Expanded template fields — optional. Left empty, the 7 short services
-    // are unaffected; the 3 key services (web-development, app-development,
-    // seo-marketing) fill these in and get the richer /usluge/[slug] layout.
+    // Expanded template fields — optional. Left empty, the short services
+    // are unaffected; the key services fill these in and get the richer
+    // /usluge/[slug] layout.
     {
       name: 'expertQuote',
       type: 'group',
@@ -79,12 +79,13 @@ export const Services: CollectionConfig = {
     { name: 'proofBody', type: 'richText' },
     { name: 'proofImage', type: 'upload', relationTo: 'media' },
     {
+      // Numbered text steps only — no images, by design (see admin note).
       name: 'processSteps',
       type: 'array',
+      admin: { description: 'Process is text-only by design — no step images.' },
       fields: [
         { name: 'stepTitle', type: 'text', required: true },
         { name: 'stepDescription', type: 'textarea' },
-        { name: 'stepImage', type: 'upload', relationTo: 'media' },
       ],
     },
     {

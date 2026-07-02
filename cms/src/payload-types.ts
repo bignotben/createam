@@ -308,11 +308,13 @@ export interface Service {
     [k: string]: unknown;
   } | null;
   proofImage?: (string | null) | Media;
+  /**
+   * Process is text-only by design — no step images.
+   */
   processSteps?:
     | {
         stepTitle: string;
         stepDescription?: string | null;
-        stepImage?: (string | null) | Media;
         id?: string | null;
       }[]
     | null;
@@ -725,7 +727,6 @@ export interface ServicesSelect<T extends boolean = true> {
     | {
         stepTitle?: T;
         stepDescription?: T;
-        stepImage?: T;
         id?: T;
       };
   faq?:
