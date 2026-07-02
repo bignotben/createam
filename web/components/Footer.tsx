@@ -27,7 +27,7 @@ export function Footer({ footer }: { footer: FooterGlobal }) {
               <div className="flex flex-col gap-3 text-[15px]">
                 {column.links.map((link) => (
                   <Link
-                    key={link.href}
+                    key={link.label}
                     href={link.href}
                     className="text-dark-muted no-underline hover:text-bg"
                   >
@@ -45,7 +45,7 @@ export function Footer({ footer }: { footer: FooterGlobal }) {
             <div className="flex gap-6">
               {footer.socialLinks.map((social) => (
                 <a
-                  key={social.href}
+                  key={social.platform}
                   href={social.href}
                   className="text-dark-faint no-underline"
                 >
