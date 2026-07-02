@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getServicesByCategory } from "@/lib/services";
 import { buildMetadata } from "@/lib/seo";
 import { CTASection } from "@/components/CTASection";
+import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 
 export const metadata = buildMetadata({
   title: "Usluge",
@@ -37,29 +38,31 @@ export default async function UslugePage() {
   return (
     <main>
       <section className="mx-auto max-w-[1280px] px-6 pb-16 pt-24 md:px-12 md:pb-20 md:pt-32">
-        <div className="mb-16 flex items-baseline justify-between border-b border-border pb-5 text-sm uppercase tracking-[0.04em] text-ink-muted">
-          <span>Usluge</span>
-          <span>Pregled — 10 usluga · 3 cjeline</span>
-        </div>
-        <h1 className="max-w-[15ch] text-[clamp(44px,6.6vw,92px)] font-semibold leading-[1] tracking-[-0.035em]">
-          <span className="block">Sve što vam treba,</span>
-          <span className="block text-accent">na jednom mjestu.</span>
-        </h1>
-        <div className="mt-12 grid items-end gap-12 md:grid-cols-[1.5fr_1fr]">
-          <p className="max-w-[52ch] text-xl leading-[1.55] text-ink-soft">
-            Ne prodajemo pojedinačne usluge kao da su odvojeni proizvodi. Svaki projekat
-            kombinuje ono što je stvarno potrebno — nekad je to samo sajt, nekad sajt, brend i
-            marketing zajedno.
-          </p>
-          <p className="max-w-[34ch] text-[17px] leading-[1.55] text-ink-muted">
-            Deset usluga, tri cjeline, jedan tim koji ih sve povezuje u jedno rješenje.
-          </p>
-        </div>
+        <Reveal>
+          <div className="mb-16 flex items-baseline justify-between border-b border-border pb-5 text-sm uppercase tracking-[0.04em] text-ink-muted">
+            <span>Usluge</span>
+            <span>Pregled — 10 usluga · 3 cjeline</span>
+          </div>
+          <h1 className="max-w-[15ch] text-[clamp(44px,6.6vw,92px)] font-semibold leading-[1] tracking-[-0.035em]">
+            <span className="block">Sve što vam treba,</span>
+            <span className="block text-accent">na jednom mjestu.</span>
+          </h1>
+          <div className="mt-12 grid items-end gap-12 md:grid-cols-[1.5fr_1fr]">
+            <p className="max-w-[52ch] text-xl leading-[1.55] text-ink-soft">
+              Ne prodajemo pojedinačne usluge kao da su odvojeni proizvodi. Svaki projekat
+              kombinuje ono što je stvarno potrebno — nekad je to samo sajt, nekad sajt, brend i
+              marketing zajedno.
+            </p>
+            <p className="max-w-[34ch] text-[17px] leading-[1.55] text-ink-muted">
+              Deset usluga, tri cjeline, jedan tim koji ih sve povezuje u jedno rješenje.
+            </p>
+          </div>
+        </Reveal>
       </section>
 
-      <div className="mx-auto max-w-[1280px] px-6 md:px-12">
+      <RevealGroup as="div" className="mx-auto max-w-[1280px] px-6 md:px-12">
         {CATEGORIES.map((cat) => (
-          <div
+          <RevealItem
             key={cat.key}
             className="grid grid-cols-1 gap-6 border-t border-ink py-12 md:grid-cols-[0.9fr_2.1fr] md:gap-14 md:py-20"
           >
@@ -106,9 +109,9 @@ export default async function UslugePage() {
                 </div>
               ) : null}
             </div>
-          </div>
+          </RevealItem>
         ))}
-      </div>
+      </RevealGroup>
 
       <div className="mt-16 md:mt-20">
         <CTASection

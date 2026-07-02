@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { ContactForm } from "@/components/ContactForm";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { JsonLd } from "@/components/JsonLd";
+import { Reveal } from "@/components/Reveal";
 
 const BREADCRUMB = [{ label: "Početna", href: "/" }, { label: "Kontakt" }];
 
@@ -41,19 +42,21 @@ export default async function KontaktPage() {
     <main>
       <JsonLd data={buildBreadcrumbJsonLd(BREADCRUMB)} />
       <section className="mx-auto max-w-[1280px] px-6 pb-14 pt-24 md:px-12 md:pb-20 md:pt-32">
-        <Breadcrumb items={BREADCRUMB} />
-        <h1 className="max-w-[14ch] text-[clamp(44px,6.6vw,92px)] font-semibold leading-[1] tracking-[-0.035em]">
-          <span className="block">Spremni da</span>
-          <span className="block text-accent">počnemo?</span>
-        </h1>
-        <p className="mt-11 max-w-[46ch] text-xl leading-[1.55] text-ink-soft">
-          Zakažite besplatan poziv od 20 minuta. Bez obaveza, bez pritiska.
-        </p>
+        <Reveal>
+          <Breadcrumb items={BREADCRUMB} />
+          <h1 className="max-w-[14ch] text-[clamp(44px,6.6vw,92px)] font-semibold leading-[1] tracking-[-0.035em]">
+            <span className="block">Spremni da</span>
+            <span className="block text-accent">počnemo?</span>
+          </h1>
+          <p className="mt-11 max-w-[46ch] text-xl leading-[1.55] text-ink-soft">
+            Zakažite besplatan poziv od 20 minuta. Bez obaveza, bez pritiska.
+          </p>
+        </Reveal>
       </section>
 
       <section className="border-t border-border">
         <div className="mx-auto max-w-[1280px] px-6 py-14 md:px-12 md:py-20">
-          <div className="grid gap-10 md:grid-cols-[1.15fr_0.85fr] md:gap-12">
+          <Reveal className="grid gap-10 md:grid-cols-[1.15fr_0.85fr] md:gap-12">
             <ContactForm services={services} />
 
             <div className="flex flex-col gap-8">
@@ -97,19 +100,21 @@ export default async function KontaktPage() {
                 </p>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="border-t border-border bg-bg-alt">
         <div className="mx-auto max-w-[1280px] px-6 py-14 md:px-12 md:py-20">
-          <div className="mb-12 flex flex-wrap items-baseline justify-between gap-4">
-            <h2 className="text-[clamp(30px,3.6vw,46px)] font-semibold tracking-[-0.03em]">
-              Česta pitanja
-            </h2>
-            <span className="text-sm uppercase tracking-[0.04em] text-ink-muted">FAQ</span>
-          </div>
-          <FAQAccordion items={FAQS} />
+          <Reveal as="div">
+            <div className="mb-12 flex flex-wrap items-baseline justify-between gap-4">
+              <h2 className="text-[clamp(30px,3.6vw,46px)] font-semibold tracking-[-0.03em]">
+                Česta pitanja
+              </h2>
+              <span className="text-sm uppercase tracking-[0.04em] text-ink-muted">FAQ</span>
+            </div>
+            <FAQAccordion items={FAQS} />
+          </Reveal>
         </div>
       </section>
     </main>

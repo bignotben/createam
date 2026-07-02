@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { mediaSizeUrl } from "@/lib/payload";
 import { MediaFrame } from "@/components/MediaFrame";
+import { RevealGroup, RevealItem } from "@/components/Reveal";
 import type { CaseStudy, CaseStudyCategory } from "@/lib/types";
 
 const FILTERS: { label: string; value: CaseStudyCategory | "all" }[] = [
@@ -42,38 +43,39 @@ export function CaseStudyGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
           );
         })}
       </div>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <RevealGroup className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {visible.map((caseStudy) => {
           const imageUrl = mediaSizeUrl(caseStudy.heroImage, "card");
           const tag = caseStudy.servicesUsed?.map((s) => s.title).join(" · ");
           return (
-            <Link
-              key={caseStudy.id}
-              href={`/radovi/${caseStudy.slug}`}
-              className="group flex flex-col border border-border no-underline transition-[background,border-color,transform] hover:-translate-y-1 hover:border-ink hover:bg-bg-alt"
-            >
-              <MediaFrame
-                src={imageUrl}
-                alt={caseStudy.heroImage?.alt || `${caseStudy.client} — screenshot projekta`}
-                aspectClassName="aspect-[4/3]"
-                className="border-b border-border"
-                bordered={false}
-              />
-              <div className="flex items-start justify-between gap-4 px-6 py-5">
-                <div>
-                  <div className="text-xl font-semibold tracking-[-0.01em] text-ink">
-                    {caseStudy.client}
+            <RevealItem key={caseStudy.id}>
+              <Link
+                href={`/radovi/${caseStudy.slug}`}
+                className="group flex flex-col border border-border no-underline transition-[background,border-color,transform] hover:-translate-y-1 hover:border-ink hover:bg-bg-alt"
+              >
+                <MediaFrame
+                  src={imageUrl}
+                  alt={caseStudy.heroImage?.alt || `${caseStudy.client} — screenshot projekta`}
+                  aspectClassName="aspect-[4/3]"
+                  className="border-b border-border"
+                  bordered={false}
+                />
+                <div className="flex items-start justify-between gap-4 px-6 py-5">
+                  <div>
+                    <div className="text-xl font-semibold tracking-[-0.01em] text-ink">
+                      {caseStudy.client}
+                    </div>
+                    {tag ? <div className="mt-1 text-sm text-ink-muted">{tag}</div> : null}
                   </div>
-                  {tag ? <div className="mt-1 text-sm text-ink-muted">{tag}</div> : null}
+                  <span className="text-xl text-accent opacity-0 transition-opacity group-hover:opacity-100">
+                    →
+                  </span>
                 </div>
-                <span className="text-xl text-accent opacity-0 transition-opacity group-hover:opacity-100">
-                  →
-                </span>
-              </div>
-            </Link>
+              </Link>
+            </RevealItem>
           );
         })}
-      </div>
+      </RevealGroup>
     </>
   );
 }

@@ -8,6 +8,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASection } from "@/components/CTASection";
 import { JsonLd } from "@/components/JsonLd";
 import { MediaFrame } from "@/components/MediaFrame";
+import { Reveal } from "@/components/Reveal";
 
 export async function generateStaticParams() {
   const posts = await getAllBlogPosts();
@@ -66,26 +67,30 @@ export default async function BlogPostPage({
       />
       <article>
         <section className="mx-auto max-w-[1280px] px-6 pb-10 pt-24 md:px-12 md:pb-14 md:pt-32">
-          <Breadcrumb items={breadcrumb} />
-          <h1 className="max-w-[20ch] text-[clamp(34px,4.6vw,60px)] font-semibold leading-[1.08] tracking-[-0.03em]">
-            {post.title}
-          </h1>
-          <div className="mt-8 flex flex-wrap gap-x-8 gap-y-2 text-[15px] text-ink-muted">
-            {post.author ? <span>{post.author.name}</span> : null}
-            {date ? <span>{date}</span> : null}
-          </div>
+          <Reveal>
+            <Breadcrumb items={breadcrumb} />
+            <h1 className="max-w-[20ch] text-[clamp(34px,4.6vw,60px)] font-semibold leading-[1.08] tracking-[-0.03em]">
+              {post.title}
+            </h1>
+            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-2 text-[15px] text-ink-muted">
+              {post.author ? <span>{post.author.name}</span> : null}
+              {date ? <span>{date}</span> : null}
+            </div>
+          </Reveal>
         </section>
 
         <section className="mx-auto max-w-[1280px] px-6 md:px-12">
-          <MediaFrame
-            src={coverUrl}
-            alt={post.coverImage?.alt || post.title}
-            aspectClassName="aspect-video"
-          />
+          <Reveal as="div">
+            <MediaFrame
+              src={coverUrl}
+              alt={post.coverImage?.alt || post.title}
+              aspectClassName="aspect-video"
+            />
+          </Reveal>
         </section>
 
         <section className="mx-auto max-w-[1280px] px-6 py-14 md:px-12 md:py-20">
-          <div className="mx-auto max-w-[680px]">
+          <Reveal as="div" className="mx-auto max-w-[680px]">
             <RichText content={post.body} />
             {post.tags && post.tags.length > 0 ? (
               <div className="mt-10 flex flex-wrap gap-2 border-t border-border pt-8">
@@ -99,7 +104,7 @@ export default async function BlogPostPage({
                 ))}
               </div>
             ) : null}
-          </div>
+          </Reveal>
         </section>
       </article>
 

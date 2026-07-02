@@ -9,6 +9,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASection } from "@/components/CTASection";
 import { JsonLd } from "@/components/JsonLd";
 import { MediaFrame } from "@/components/MediaFrame";
+import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 
 export async function generateStaticParams() {
   const caseStudies = await getAllCaseStudies();
@@ -49,88 +50,92 @@ export default async function CaseStudyDetailPage({
       <JsonLd data={buildBreadcrumbJsonLd(breadcrumb)} />
       <article>
       <section className="mx-auto max-w-[1280px] px-6 pb-10 pt-24 md:px-12 md:pb-14 md:pt-32">
-        <Breadcrumb items={breadcrumb} />
-        <h1 className="max-w-[20ch] text-[clamp(38px,5.4vw,76px)] font-semibold leading-[1.04] tracking-[-0.035em]">
-          <span className="block">{line1}</span>
-          {line2 ? <span className="block text-accent">{line2}</span> : null}
-        </h1>
-        <div className="mt-10 flex flex-wrap gap-x-8 gap-y-2 text-[15px] text-ink-muted">
-          <span>
-            <span className="text-ink-faint">Klijent:</span> {caseStudy.client}
-          </span>
-          {servicesList ? (
-            <>
-              <span className="text-border">·</span>
-              <span>
-                <span className="text-ink-faint">Usluge:</span> {servicesList}
-              </span>
-            </>
-          ) : null}
-          {caseStudy.year ? (
-            <>
-              <span className="text-border">·</span>
-              <span>
-                <span className="text-ink-faint">Godina:</span> {caseStudy.year}
-              </span>
-            </>
-          ) : null}
-        </div>
+        <Reveal>
+          <Breadcrumb items={breadcrumb} />
+          <h1 className="max-w-[20ch] text-[clamp(38px,5.4vw,76px)] font-semibold leading-[1.04] tracking-[-0.035em]">
+            <span className="block">{line1}</span>
+            {line2 ? <span className="block text-accent">{line2}</span> : null}
+          </h1>
+          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-2 text-[15px] text-ink-muted">
+            <span>
+              <span className="text-ink-faint">Klijent:</span> {caseStudy.client}
+            </span>
+            {servicesList ? (
+              <>
+                <span className="text-border">·</span>
+                <span>
+                  <span className="text-ink-faint">Usluge:</span> {servicesList}
+                </span>
+              </>
+            ) : null}
+            {caseStudy.year ? (
+              <>
+                <span className="text-border">·</span>
+                <span>
+                  <span className="text-ink-faint">Godina:</span> {caseStudy.year}
+                </span>
+              </>
+            ) : null}
+          </div>
+        </Reveal>
       </section>
 
       <section className="mx-auto max-w-[1280px] px-6 md:px-12">
-        <MediaFrame
-          src={heroImageUrl}
-          alt={caseStudy.heroImage?.alt || caseStudy.title}
-          aspectClassName="aspect-video"
-        />
+        <Reveal as="div">
+          <MediaFrame
+            src={heroImageUrl}
+            alt={caseStudy.heroImage?.alt || caseStudy.title}
+            aspectClassName="aspect-video"
+          />
+        </Reveal>
       </section>
 
       <section className="mx-auto max-w-[1280px] px-6 py-14 md:px-12 md:py-20">
         <div className="mx-auto max-w-[680px]">
           {caseStudy.problem ? (
-            <div>
+            <Reveal as="div">
               <div className="mb-3.5 text-sm text-accent">01</div>
               <h2 className="mb-6 text-[clamp(28px,3.2vw,40px)] font-semibold tracking-[-0.03em]">
                 Problem
               </h2>
               <RichText content={caseStudy.problem} />
-            </div>
+            </Reveal>
           ) : null}
 
           {caseStudy.approach ? (
-            <div className="mt-18 border-t border-border pt-18">
+            <Reveal as="div" className="mt-18 border-t border-border pt-18">
               <div className="mb-3.5 text-sm text-accent">02</div>
               <h2 className="mb-6 text-[clamp(28px,3.2vw,40px)] font-semibold tracking-[-0.03em]">
                 Pristup
               </h2>
               <RichText content={caseStudy.approach} />
-            </div>
+            </Reveal>
           ) : null}
 
           {caseStudy.result ? (
-            <div className="mt-18 border-t border-border pt-18">
+            <Reveal as="div" className="mt-18 border-t border-border pt-18">
               <div className="mb-3.5 text-sm text-accent">03</div>
               <h2 className="mb-6 text-[clamp(28px,3.2vw,40px)] font-semibold tracking-[-0.03em]">
                 Rezultat
               </h2>
               <RichText content={caseStudy.result} />
               {caseStudy.stats && caseStudy.stats.length > 0 ? (
-                <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                <RevealGroup className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
                   {caseStudy.stats.map((stat, i) => (
-                    <div key={i} className="border border-border px-6 py-7">
+                    <RevealItem key={i} className="border border-border px-6 py-7">
                       <div className="text-[clamp(34px,4vw,46px)] font-semibold tracking-[-0.03em] text-accent">
                         {stat.value}
                       </div>
                       <div className="mt-2 text-sm text-ink-muted">{stat.label}</div>
-                    </div>
+                    </RevealItem>
                   ))}
-                </div>
+                </RevealGroup>
               ) : null}
-            </div>
+            </Reveal>
           ) : null}
 
           {caseStudy.quote?.text ? (
-            <div className="mt-18 border-t border-border pt-18">
+            <Reveal as="div" className="mt-18 border-t border-border pt-18">
               <blockquote className="text-[clamp(24px,3vw,34px)] italic leading-[1.4] tracking-[-0.02em] text-ink">
                 „{caseStudy.quote.text}“
               </blockquote>
@@ -140,7 +145,7 @@ export default async function CaseStudyDetailPage({
                   <div className="text-[15px] font-semibold">{caseStudy.quote.author}</div>
                 </div>
               ) : null}
-            </div>
+            </Reveal>
           ) : null}
         </div>
       </section>
