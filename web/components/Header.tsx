@@ -53,12 +53,12 @@ export function Header({
                 Usluge <span className="text-[10px] transition-transform group-hover:rotate-180">▾</span>
               </Link>
               <div className="invisible absolute left-0 top-full pt-3.5 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                <div className="grid min-w-[300px] grid-cols-2 gap-0.5 rounded-flat border border-border bg-bg p-2">
+                <div className="grid min-w-[340px] grid-cols-2 gap-0.5 rounded-flat border border-border bg-bg p-2">
                   {services.map((service) => (
                     <Link
                       key={service.id}
                       href={`/usluge/${service.slug}`}
-                      className="whitespace-nowrap rounded-[2px] px-3 py-[9px] text-sm text-ink-soft no-underline hover:bg-bg-alt hover:text-ink"
+                      className="rounded-[2px] px-3 py-[9px] text-sm leading-snug text-ink-soft no-underline hover:bg-bg-alt hover:text-ink"
                     >
                       {service.title}
                     </Link>
