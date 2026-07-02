@@ -10,6 +10,10 @@ cms/dist/
 cms/build/
 cms/.next/
 
+# Cloudflare Worker (wrangler) local state and dev secrets
+worker/.wrangler/
+worker/.dev.vars
+
 # Env files
 .env
 .env.local

@@ -1,0 +1,37 @@
+name = "createam-ai-vidljivost"
+main = "src/index.ts"
+compatibility_date = "2026-07-02"
+
+# Non-secret configuration. Safe to commit — no keys here.
+[vars]
+# Comma-separated list of origins allowed to call this Worker (CORS).
+# localhost/127.0.0.1 on any port is always allowed for dev, in addition
+# to whatever is listed here. Update this to your real domain before
+# going live.
+ALLOWED_ORIGINS = "https://createam.ba,https://www.createam.ba, https://createam.bytetic.net"
+
+# Used for the OpenRouter "HTTP-Referer" header (dashboard attribution).
+SITE_URL_FOR_REFERER = "https://createam.bytetic.net"
+
+# Fallback chain of OpenRouter *free* models, tried in order. Free models
+# get deprecated/renamed/rate-limited over time — check
+# https://openrouter.ai/models?max_price=0 and update this list if the
+# AI step starts returning "unavailable" often.
+AI_MODELS = "meta-llama/llama-3.3-70b-instruct:free,deepseek/deepseek-chat-v3.1:free,qwen/qwen3-235b-a22b:free"
+
+# Soft daily cap on AI calls (kept safely under OpenRouter's free-tier
+# ~1000/day ceiling) and a per-IP daily cap to stop one visitor from
+# using the whole budget.
+MAX_DAILY_AI_CALLS = "900"
+MAX_DAILY_AI_CALLS_PER_IP = "3"
+
+# KV namespace for the rate-limit counters. Create it with:
+#   wrangler kv namespace create RATE_LIMIT_KV
+# then replace the placeholder id below with the one it prints
+# (see README.md for the full walkthrough).
+[[kv_namespaces]]
+binding = "RATE_LIMIT_KV"
+id = "2cdc0c849a1d4ef4a037ad0df228993d"
+
+# OPENROUTER_API_KEY is a SECRET, not a var — never put it here.
+# Set it with: wrangler secret put OPENROUTER_API_KEY

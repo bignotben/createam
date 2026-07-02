@@ -269,6 +269,34 @@ export default async function Home() {
         </section>
       ) : null}
 
+      {/* AI ALAT TEASER */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-[1280px] px-6 py-20 md:px-12 md:py-32">
+          <Reveal className="grid items-center gap-16 md:grid-cols-[1fr_1.3fr]">
+            <div>
+              <span className="text-sm uppercase tracking-[0.04em] text-ink-muted">
+                (05) — Besplatan alat
+              </span>
+              <h2 className="mt-5 max-w-[16ch] text-[clamp(30px,3.6vw,46px)] font-semibold leading-[1.08] tracking-[-0.03em]">
+                Kako vas <span className="text-accent">AI vidi?</span>
+              </h2>
+            </div>
+            <div>
+              <p className="max-w-[48ch] text-xl leading-[1.55] text-ink-soft">
+                Sve više ljudi pita ChatGPT umjesto da traži na Google-u. Provjerite besplatno da
+                li ti alati uopšte razumiju čime se vaš biznis bavi.
+              </p>
+              <Link
+                href="/kako-vas-ai-vidi"
+                className="mt-8 inline-flex items-center gap-2.5 border-b-2 border-accent pb-1 text-base font-medium text-ink no-underline"
+              >
+                Provjerite besplatno <span className="text-accent">→</span>
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* FINAL CTA */}
       <section className="border-t border-dark-border bg-dark text-on-dark">
         <Reveal

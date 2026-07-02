@@ -1,0 +1,9 @@
+
+# Local-only secrets for `wrangler dev`. Copy this file to `.dev.vars`
+# (gitignored) and fill in your real key — never commit `.dev.vars` or an
+# actual key anywhere in this repo.
+#
+# In production, this is set with:
+#   wrangler secret put OPENROUTER_API_KEY
+
+OPENROUTER_API_KEY=sk-or-v1-REPLACE_WITH_YOUR_OWN_KEY
